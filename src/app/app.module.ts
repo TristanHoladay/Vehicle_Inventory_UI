@@ -13,12 +13,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './services/auth-service.service';
 import { InterceptorService } from './services/interceptor.service';
+import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomePageComponent,
+    UserHomePageComponent
   ],
   imports: [
     BrowserModule,
