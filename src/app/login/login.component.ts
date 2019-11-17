@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => { 
           this.authService
-          this.router.navigateByUrl("login");
+          this.router.navigateByUrl("admin");
           
         },
         error => {

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Vehicle-Inventory-UI';
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  logOut() {
+    this.authService.logout;
+    this.router.navigateByUrl("login");
+  }
+
 }

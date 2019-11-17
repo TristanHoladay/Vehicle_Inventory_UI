@@ -15,6 +15,12 @@ import { AuthService } from './services/auth-service.service';
 import { InterceptorService } from './services/interceptor.service';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersComponent } from './functions/users/users.component';
+import { VehiclesComponent } from './functions/vehicles/vehicles.component';
+import { ResourcesComponent } from './functions/resources/resources.component';
+import { ReportsComponent } from './functions/reports/reports.component';
+import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
 
 
 @NgModule({
@@ -22,7 +28,13 @@ import { UserHomePageComponent } from './user-home-page/user-home-page.component
     AppComponent,
     LoginComponent,
     AdminHomePageComponent,
-    UserHomePageComponent
+    UserHomePageComponent,
+    PageNotFoundComponent,
+    UsersComponent,
+    VehiclesComponent,
+    ResourcesComponent,
+    ReportsComponent,
+    JobTicketsComponent
   ],
   imports: [
     BrowserModule,
