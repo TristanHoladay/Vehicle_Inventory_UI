@@ -21,6 +21,7 @@ import { VehiclesComponent } from './functions/vehicles/vehicles.component';
 import { ResourcesComponent } from './functions/resources/resources.component';
 import { ReportsComponent } from './functions/reports/reports.component';
 import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
+import { CompaniesComponent } from './functions/companies/companies.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { JobTicketsComponent } from './functions/job-tickets/job-tickets.compone
     VehiclesComponent,
     ResourcesComponent,
     ReportsComponent,
-    JobTicketsComponent
+    JobTicketsComponent,
+    CompaniesComponent
   ],
   imports: [
     BrowserModule,

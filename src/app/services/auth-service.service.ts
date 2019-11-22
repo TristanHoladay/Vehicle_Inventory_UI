@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import { IUser } from '../interfaces/iuser';
 import decode from 'jwt-decode';
-//import { tokenNotExpired } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 
@@ -16,7 +16,10 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<IUser>;
   private currentUser: Observable<IUser>;
 
-  constructor(private http: HttpClient) { 
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService
+    ) { 
     this.currentUserSubject = new BehaviorSubject<IUser>(
       JSON.parse(localStorage.getItem("currentUser"))
     );
@@ -36,10 +39,10 @@ export class AuthService {
     return localStorage.getItem("token");
   }
 
-  // public isAuthenticated(): boolean {
-  //   const token = this.getToken();
-  //   return tokenNotExpired(null, token);
-  // }
+   public isAuthenticated(): boolean {
+     const token = this.getToken();
+     return !this.jwtHelper.isTokenExpired(token);
+   }
   
 
   register(user: any): Observable<IUser> {

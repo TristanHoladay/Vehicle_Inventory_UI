@@ -7,12 +7,21 @@ import { UsersComponent } from './functions/users/users.component';
 import { VehiclesComponent } from './functions/vehicles/vehicles.component';
 import { ResourcesComponent } from './functions/resources/resources.component';
 import { ReportsComponent } from './functions/reports/reports.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
-  { path: 'admin', component: AdminHomePageComponent },
+  { 
+    path: 'admin',
+    component: AdminHomePageComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'admin'
+    }
+   },
   { path: 'users', component: UsersComponent },
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'resources', component: ResourcesComponent },
