@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
 //import { tokenNotExpired } from 'angular2-jwt';
-//import { JwtModule } from '@auth0/angular-jwt';
-//import { of } from 'rxjs';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,12 @@ import { ResourcesComponent } from './functions/resources/resources.component';
 import { ReportsComponent } from './functions/reports/reports.component';
 import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
 import { CompaniesComponent } from './functions/companies/companies.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -45,8 +51,19 @@ import { CompaniesComponent } from './functions/companies/companies.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:44314"]
+      }
+    })
   ],
-  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [
+    AuthService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
+    AuthGuardService,
+    RoleGuardService,
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

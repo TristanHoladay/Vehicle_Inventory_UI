@@ -16,7 +16,7 @@ export class RoleGuardService {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
 
-    const token = this.authService.getToken;
+    const token = this.authService.getToken();
 
     const tokenPayload = decode(token);
 

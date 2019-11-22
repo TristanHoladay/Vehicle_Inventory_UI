@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { decode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -38,9 +39,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => { 
-          this.authService
           this.router.navigateByUrl("admin");
-          
         },
         error => {
           console.log(error);
@@ -48,5 +47,6 @@ export class LoginComponent implements OnInit {
       );
       console.log("logged in!");
       console.log(this.authService.getToken());
+      console.log(this.authService.displayPayload());
   }
 }

@@ -70,4 +70,9 @@ export class AuthService {
     localStorage.removeItem("currentUser");
     this.currentUserSubject.next(null);
   }
+
+  displayPayload() {
+    const token = decode(this.getToken());
+    return token;
+  }
 }
