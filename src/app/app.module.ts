@@ -25,6 +25,7 @@ import { JobTicketsComponent } from './functions/job-tickets/job-tickets.compone
 import { CompaniesComponent } from './functions/companies/companies.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
+import { InventoryRequestComponent } from './functions/inventory-request/inventory-request.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +43,8 @@ export function tokenGetter() {
     ResourcesComponent,
     ReportsComponent,
     JobTicketsComponent,
-    CompaniesComponent
+    CompaniesComponent,
+    InventoryRequestComponent
   ],
   imports: [
     BrowserModule,

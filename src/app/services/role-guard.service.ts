@@ -16,13 +16,11 @@ export class RoleGuardService {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
 
-    const token = this.authService.getToken();
-
-    const tokenPayload = decode(token);
+    const token = this.authService.decodeToken();
 
     if (
       !this.authService.isAuthenticated() ||
-      tokenPayload.role !== expectedRole
+      token.role !== expectedRole
     ) {
       this.router.navigateByUrl("login");
       return false;

@@ -4,5 +4,6 @@ export interface IUser {
     lastName: string;
     jobDescription: string;
     companyId: number;
-    authData?: string;
+    role: string,
+    token?: string
 }

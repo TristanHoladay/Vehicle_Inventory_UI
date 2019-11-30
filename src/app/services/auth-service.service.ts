@@ -71,8 +71,9 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 
-  displayPayload() {
+  decodeToken() {
     const token = decode(this.getToken());
+    token.role = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
     return token;
   }
 }
