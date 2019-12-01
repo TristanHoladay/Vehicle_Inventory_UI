@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CompanyService } from 'src/app/services/company.service';
+import { ICompany } from 'src/app/interfaces/icompany';
 
 @Component({
   selector: 'app-companies',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./companies.component.css']
 })
 export class CompaniesComponent implements OnInit {
-
-  constructor() { }
+  companies: ICompany[] = [];
+  
+  constructor(
+    private http: HttpClient,
+    private compService: CompanyService
+  ) { }
 
   ngOnInit() {
+    this.compService.getAllCompanies().subscribe(data =>
+      (this.companies = data));
   }
 
 }

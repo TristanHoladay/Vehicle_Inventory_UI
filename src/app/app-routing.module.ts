@@ -10,6 +10,7 @@ import { ReportsComponent } from './functions/reports/reports.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { CompaniesComponent } from './functions/companies/companies.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'home', component: UserHomePageComponent},
   { path: 'users', component: UsersComponent },
   { path: 'vehicles', component: VehiclesComponent },
+  { path: 'companies', component: CompaniesComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'reports', component: ReportsComponent },
   { path: '**', component: PageNotFoundComponent}
