@@ -2,8 +2,9 @@ export interface IUser {
     id: number;
     firstName: string;
     lastName: string;
+    fullName: string;
+    email: string;
     jobDescription: string;
     companyId: number;
-    role: string,
-    token?: string
+    adminRole: boolean;
 }

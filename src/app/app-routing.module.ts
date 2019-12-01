@@ -9,6 +9,7 @@ import { ResourcesComponent } from './functions/resources/resources.component';
 import { ReportsComponent } from './functions/reports/reports.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
       expectedRole: 'Admin'
     }
    },
+  { path: 'home', component: UserHomePageComponent},
   { path: 'users', component: UsersComponent },
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'resources', component: ResourcesComponent },

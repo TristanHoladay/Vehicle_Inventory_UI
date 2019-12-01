@@ -18,12 +18,13 @@ export class RoleGuardService {
 
     const token = this.authService.decodeToken();
 
-    if (
-      !this.authService.isAuthenticated() ||
-      token.role !== expectedRole
-    ) {
+    if (!this.authService.isAuthenticated()) {
       this.router.navigateByUrl("login");
       return false;
+    }
+
+    if(token.role !== expectedRole) {
+      this.router.navigateByUrl("home");
     }
     return true;
   }
