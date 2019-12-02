@@ -1,10 +1,9 @@
 export interface IUser {
-    id: number;
+    id: string;
     firstName: string;
     lastName: string;
     fullName: string;
     email: string;
     jobDescription: string;
-    companyId: number;
     adminRole: boolean;
 }

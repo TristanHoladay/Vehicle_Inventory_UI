@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         }
       );
       console.log("logged in!");
+      console.log(this.authService.getToken());
       console.log(this.authService.decodeToken());
   }
 }
