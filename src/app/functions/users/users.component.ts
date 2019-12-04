@@ -10,9 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'email', 'jobDescription', 'adminRole'];
-  dataSource: MatTableDataSource<IUser>;
-  myControl = new FormControl();
+  Users: IUser[] = [];
 
   constructor(
     private userService: UserService
@@ -20,7 +18,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(data => {
-      this.dataSource = new MatTableDataSource<IUser>(data);
+      this.Users = data;
     });
   }
 

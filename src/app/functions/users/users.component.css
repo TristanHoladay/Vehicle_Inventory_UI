@@ -1,0 +1,14 @@
+#user-container {
+    display: grid;
+    justify-content: center;
+}
+
+#user {
+    width: 30em;
+    height: auto;
+}
+
+#user > span {
+    margin: 0;
+    display: inline;
+}
