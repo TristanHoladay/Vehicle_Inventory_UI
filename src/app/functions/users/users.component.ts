@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatTableDataSource, MatSort, MatInputModule } from '@angular/material';
 import { IUser } from 'src/app/interfaces/iuser';
 import { UserService } from 'src/app/services/user.service';
+import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
 
 @Component({
   selector: 'app-users',
@@ -11,15 +12,22 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsersComponent implements OnInit {
   Users: IUser[] = [];
+  type: any;
 
   constructor(
-    private userService: UserService
+    private userService: UserService<IUser>
   ) { }
+
+  getServiceType() {
+     this.type = typeof this.Users;
+  }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(data => {
       this.Users = data;
     });
+
+    console.log(this.getServiceType());
   }
 
 }

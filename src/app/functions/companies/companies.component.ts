@@ -16,16 +16,12 @@ export class CompaniesComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private compService: CompanyService,
-    private userService: UserService
+    private compService: CompanyService
   ) { }
 
   ngOnInit() {
     this.compService.getAllCompanies().subscribe(data =>
       (this.companies = data));
-    
-    this.userService.getAllUsers().subscribe(data => 
-      (this.users = data));
   }
 
 }

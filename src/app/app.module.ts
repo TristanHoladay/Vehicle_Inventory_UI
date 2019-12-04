@@ -34,6 +34,8 @@ import { ReportsComponent } from './functions/reports/reports.component';
 import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
 import { CompaniesComponent } from './functions/companies/companies.component';
 import { InventoryRequestComponent } from './functions/inventory-request/inventory-request.component';
+import { DeleteModal } from './modals/delete/delete.component';
+import { UpdateModal } from './modals/update/update.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,7 +54,9 @@ export function tokenGetter() {
     ReportsComponent,
     JobTicketsComponent,
     CompaniesComponent,
-    InventoryRequestComponent
+    InventoryRequestComponent,
+    DeleteModal,
+    UpdateModal
   ],
   imports: [
     BrowserModule,

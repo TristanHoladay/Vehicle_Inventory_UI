@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/iuser';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService<IUser> {
   url: string = this.URL.getURL();
 
   constructor(
@@ -18,6 +18,26 @@ export class UserService {
   getAllUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(
       `${this.url}/users`
+    );
+  }
+
+  //getUserBy Name?
+
+  addUser(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(
+      `${this.url}/auth/register`, user
+    );
+  }
+
+  updateUser(id: string, user: IUser): Observable<IUser> {
+    return this.http.put<IUser>(
+    `${this.url}/users` + id , user
+    );
+  }
+
+  deleteUser(id: string): Observable<IUser> {
+    return this.http.delete<IUser>(
+      `${this.url}/users` + id
     );
   }
 
