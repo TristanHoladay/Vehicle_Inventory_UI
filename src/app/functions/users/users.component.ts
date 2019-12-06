@@ -18,16 +18,10 @@ export class UsersComponent implements OnInit {
     private userService: UserService<IUser>
   ) { }
 
-  getServiceType() {
-     this.type = typeof this.Users;
-  }
-
   ngOnInit() {
     this.userService.getAllUsers().subscribe(data => {
       this.Users = data;
     });
-
-    console.log(this.getServiceType());
   }
 
 }

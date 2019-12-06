@@ -31,13 +31,13 @@ export class UserService<IUser> {
 
   updateUser(id: string, user: IUser): Observable<IUser> {
     return this.http.put<IUser>(
-    `${this.url}/users` + id , user
+    `${this.url}/users/` + id , user
     );
   }
 
-  deleteUser(id: string): Observable<IUser> {
+  delete(id: string): Observable<IUser> {
     return this.http.delete<IUser>(
-      `${this.url}/users` + id
+      `${this.url}/users/` + id
     );
   }
 

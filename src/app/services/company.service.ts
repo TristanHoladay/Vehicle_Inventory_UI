@@ -20,4 +20,29 @@ export class CompanyService {
         `${this.url}/companies`
       );
     }
+  
+    getCompanyById(id: number): Observable<ICompany> {
+      return this.http.get<ICompany>(
+        `${this.url}/companies/` + id
+      );
+    }
+
+  
+    addCompany(user: ICompany): Observable<ICompany> {
+      return this.http.post<ICompany>(
+        `${this.url}/companies`, user
+      );
+    }
+  
+    updateCompany(id: number, company: ICompany): Observable<ICompany> {
+      return this.http.put<ICompany>(
+      `${this.url}/companies/` + id , company
+      );
+    }
+  
+    delete(id: number): Observable<ICompany> {
+      return this.http.delete<ICompany>(
+        `${this.url}/companies/` + id
+      );
+    }
 }

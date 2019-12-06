@@ -6,4 +6,5 @@ export interface IUser {
     email: string;
     jobDescription: string;
     adminRole: boolean;
+    flag: number;
 }

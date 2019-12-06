@@ -1,8 +1,9 @@
 <div id="user-container" *ngFor="let user of Users">
     <div id="user" class="card">
-        <span>{{ user.fullName }}</span> <span>{{ user.email }}</span> <span>{{ user.jobDescription }}</span> 
+        <span>{{ user.id }}</span> <span>{{ user.fullName }}</span> <span>{{ user.email }}</span> <span>{{ user.jobDescription }}</span> 
         <span>{{ user.adminRole }}</span> 
         <span>Update</span>
         <span>Delete</span>
     </div>
+   <delete-modal [user]="user">Delete</delete-modal>
 </div>

@@ -16,7 +16,7 @@ import { IUser } from 'src/app/interfaces/iuser';
   styleUrls: ['./delete.component.css']
 })
 export class DeleteModal implements OnInit {
-  @Input() delObject: object;
+  @Input() user: IUser;
   closeResult: string;
 
   constructor(
@@ -33,8 +33,10 @@ export class DeleteModal implements OnInit {
 
   ngOnInit() {}
 
-  deleteObject(object: any) {
-    
+  deleteObject(user: IUser) {
+    this.userService.delete(this.user.id).subscribe(data => {
+      console.log(data);
+    });
   }
 
   open(content) {

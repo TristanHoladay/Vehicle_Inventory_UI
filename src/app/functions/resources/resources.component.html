@@ -1,1 +1,14 @@
-<p>resources works!</p>
+<div *ngFor="let item of Items">
+    <div>
+        {{ item.id }}
+        {{ item.name }}
+        {{ item.amount }}
+        {{ item.cost }}
+        {{ item.storageLocation }}
+    </div>
+</div>
+
+<div>
+    {{ oneItem.id }}
+    {{ oneItem.name }}
+</div>
