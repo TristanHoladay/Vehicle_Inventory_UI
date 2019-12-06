@@ -11,7 +11,7 @@ export class ResourcesComponent implements OnInit {
   Items: Iitem[] = [];
   oneItem: Iitem;
   addItem: Iitem =  {
-    id: null,
+    id: 1,
     name: "HP Notebook",
     description: "the description",
     amount: 1,
@@ -21,7 +21,9 @@ export class ResourcesComponent implements OnInit {
     storageLocation: "armory",
     companyId: 1,
     company: null,
-    useTicketId: null,
+    vehicleId: 0,
+    vehicle: null,
+    useTicketId: 0,
     useTicket: null,
   }
 
@@ -34,13 +36,14 @@ export class ResourcesComponent implements OnInit {
       this.Items = data;
     });
 
-      this.itemService.getItemById(2).subscribe(data => {
+      this.itemService.getItemById(9).subscribe(data => {
         this.oneItem = data;
+        console.log(this.oneItem.id + " " + this.oneItem.company);
       });
 
     this.itemService.addItem(this.addItem).subscribe(data => {
         console.log(data);
-      });
+    });
   
   }
 

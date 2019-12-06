@@ -9,6 +9,8 @@ export interface Iitem {
     company: string;
     resourceTypeId: number;
     resourceType: string;
+    vehicleId: number;
+    vehicle: string;
     useTicketId: number;
     useTicket: string;
 }
