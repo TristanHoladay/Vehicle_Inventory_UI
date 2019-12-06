@@ -1,8 +1,5 @@
 export interface ICompany {
-    Id: number;
+    id: number;
     name: string;
     status: string;
-    items: [];
-    tickets: [];
-    requests: [];
 }

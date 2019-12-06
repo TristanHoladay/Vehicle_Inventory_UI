@@ -1,4 +1,20 @@
+
+
 <div *ngFor="let company of companies">
-   <li>{{ company.name }}</li>
-   <li>{{ company.status }}</li>
-</div>
+      <div>
+          {{ company.id }}
+          {{ company.name }}
+          {{ company.status }}
+          <div>
+              <button (click)="updateCompany(company.id, company)">Update</button>
+          </div>
+      </div>
+  </div>
+  
+  <div>
+      {{ oneCompany.id }}
+      {{ oneCompany.name }}
+  </div>
+  
+  <button (click)="deleteCompany(3)">Delete</button>
+  

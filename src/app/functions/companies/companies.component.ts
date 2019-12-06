@@ -19,9 +19,41 @@ export class CompaniesComponent implements OnInit {
     private compService: CompanyService
   ) { }
 
+  oneCompany: ICompany;
+  addCompany: ICompany =  {
+    id: 1,
+    name: "Discovery Healthcare Group",
+    status: "Fully Managed"
+  }
+
+
   ngOnInit() {
-    this.compService.getAllCompanies().subscribe(data =>
-      (this.companies = data));
+    this.compService.getAllCompanies().subscribe(data => {
+      this.companies = data;
+    });
+
+      this.compService.getCompanyById(2).subscribe(data => {
+        this.oneCompany = data;
+        console.log(this.oneCompany.id + " " + this.oneCompany.name);
+      });
+
+      // this.compService.addCompany(this.addCompany).subscribe(data => {
+      //   console.log(data);
+      // })
+  
+  }
+
+  updateCompany(id: number, company: ICompany) {
+    company.name = "Updated Company Name";
+    this.compService.updateCompany(id, company).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  deleteCompany(id: number) {
+    this.compService.delete(id).subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

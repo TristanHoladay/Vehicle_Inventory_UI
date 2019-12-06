@@ -5,6 +5,9 @@
         {{ item.amount }}
         {{ item.cost }}
         {{ item.storageLocation }}
+        <div>
+            <button (click)="updateItem(item.id, item)">Update</button>
+        </div>
     </div>
 </div>
 
@@ -12,3 +15,7 @@
     {{ oneItem.id }}
     {{ oneItem.name }}
 </div>
+
+<button (click)="deleteItem(11)">Delete</button>
+
+

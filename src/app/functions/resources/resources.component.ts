@@ -40,14 +40,11 @@ export class ResourcesComponent implements OnInit {
         this.oneItem = data;
         console.log(this.oneItem.id + " " + this.oneItem.company);
       });
-
-    this.itemService.addItem(this.addItem).subscribe(data => {
-        console.log(data);
-    });
   
   }
 
   updateItem(id: number, item: Iitem) {
+    item.name = "TESTING UPDATE FROM FRONT END";
     this.itemService.updateItem(id, item).subscribe(data => {
       console.log(data);
     });
