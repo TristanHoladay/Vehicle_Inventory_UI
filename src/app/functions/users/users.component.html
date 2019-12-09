@@ -1,9 +1,18 @@
-<div id="user-container" *ngFor="let user of Users">
-    <div id="user" class="card">
-        <span>{{ user.id }}</span> <span>{{ user.fullName }}</span> <span>{{ user.email }}</span> <span>{{ user.jobDescription }}</span> 
-        <span>{{ user.adminRole }}</span> 
-        <span>Update</span>
-        <span>Delete</span>
+<div *ngFor="let user of Users">
+        <div>
+            {{ user.id }}
+            {{ user.fullName }}
+            {{ user.jobDescription }}
+            {{ user.adminRole }}
+            <div>
+                <button (click)="updateUser(user.id, user)">Update</button>
+            </div>
+        </div>
     </div>
-   <delete-modal [user]="user">Delete</delete-modal>
+    <br>
+    <div>
+        {{ oneUser.id }}
+        {{ oneUser.fullName }}
 </div>
+    
+    <button (click)="deleteUser(3)">Delete</button>

@@ -13,4 +13,5 @@ export interface Iitem {
     vehicle: string;
     useTicketId: number;
     useTicket: string;
+    itemT: string;
 }

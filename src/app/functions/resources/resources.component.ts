@@ -25,6 +25,7 @@ export class ResourcesComponent implements OnInit {
     vehicle: null,
     useTicketId: 0,
     useTicket: null,
+    itemT: null
   }
 
   constructor(

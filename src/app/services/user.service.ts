@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/iuser';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService<IUser> {
+export class UserService {
   url: string = this.URL.getURL();
 
   constructor(
@@ -21,7 +21,11 @@ export class UserService<IUser> {
     );
   }
 
-  //getUserBy Name?
+  getUserById(id: string): Observable<IUser> {
+    return this.http.get<IUser>(
+      `${this.url}/users/` + id 
+    )
+  }
 
   addUser(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(

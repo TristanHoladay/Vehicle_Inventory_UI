@@ -11,6 +11,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { CompaniesComponent } from './functions/companies/companies.component';
+import { InventoryRequestComponent } from './functions/inventory-request/inventory-request.component';
+import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
 
 
 const routes: Routes = [
@@ -28,8 +30,10 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'companies', component: CompaniesComponent },
+  { path: 'requests', component: InventoryRequestComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'reports', component: ReportsComponent },
+  { path: 'tickets', component: JobTicketsComponent },
   { path: '**', component: PageNotFoundComponent}
 
 ];

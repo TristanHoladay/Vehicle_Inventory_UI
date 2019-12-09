@@ -4,7 +4,8 @@ export interface IUser {
     lastName: string;
     fullName: string;
     email: string;
+    password: string;
     jobDescription: string;
     adminRole: boolean;
-    flag: number;
+    userT: string;
 }

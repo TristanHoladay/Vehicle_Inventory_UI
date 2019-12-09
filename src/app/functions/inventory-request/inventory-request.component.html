@@ -1,1 +1,18 @@
-<p>inventory-request works!</p>
+
+<div *ngFor="let request of requests">
+        <div>
+            {{ request.id }}
+            {{ request.details }}
+            {{ request.company }}
+            <div>
+                <button (click)="updateRequest(request.id, request)">Update</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        {{ oneRequest.id }}
+        {{ oneRequest.details }}
+</div>
+    
+    <button (click)="deleteRequest(2)">Delete</button>

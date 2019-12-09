@@ -1,1 +1,18 @@
-<p>job-tickets works!</p>
+<div *ngFor="let ticket of tickets">
+        <div>
+            {{ ticket.id }}
+            {{ ticket.tisNumber }}
+            {{ ticket.date }}
+            {{ ticket.notes }}
+            <div>
+                <button (click)="updateTicket(ticket.id, ticket)">Update</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        {{ oneTicket.id }}
+        {{ oneTicket.details }}
+</div>
+    
+    <button (click)="deleteTicket(4)">Delete</button>

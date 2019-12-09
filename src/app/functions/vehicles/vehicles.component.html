@@ -1,1 +1,19 @@
-<p>vehicles works!</p>
+<div *ngFor="let vehicle of vehicles">
+        <div>
+            {{ vehicle.id }}
+            {{ vehicle.name }}
+            {{ vehicle.model }}
+            {{ vehicle.notes }}
+            <div>
+                <button (click)="updateVehicle(vehicle.id, vehicle)">Update</button>
+                <delete-modal [delObject]="vehicle"></delete-modal>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        {{ oneVehicle.id }}
+        {{ oneVehicle.notes}}
+</div>
+    
+    <button (click)="deleteVehicle(3)">Delete</button>

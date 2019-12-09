@@ -23,7 +23,8 @@ export class CompaniesComponent implements OnInit {
   addCompany: ICompany =  {
     id: 1,
     name: "Discovery Healthcare Group",
-    status: "Fully Managed"
+    status: "Fully Managed",
+    compT: null
   }
 
 
@@ -37,9 +38,9 @@ export class CompaniesComponent implements OnInit {
         console.log(this.oneCompany.id + " " + this.oneCompany.name);
       });
 
-      // this.compService.addCompany(this.addCompany).subscribe(data => {
+      //  this.compService.addCompany(this.addCompany).subscribe(data => {
       //   console.log(data);
-      // })
+      //  })
   
   }
 
@@ -50,7 +51,7 @@ export class CompaniesComponent implements OnInit {
     });
   }
 
-  deleteCompany(id: number) {
+  delete(id: number) {
     this.compService.delete(id).subscribe(data => {
       console.log(data);
     })
