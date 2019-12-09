@@ -28,13 +28,13 @@ export class ItemService {
   }
 
 
-  addItem(item: Iitem): Observable<Iitem> {
+  add(item: Iitem): Observable<Iitem> {
     return this.http.post<Iitem>(
       `${this.url}/resources`, item
     );
   }
 
-  updateItem(id: number, item: Iitem): Observable<Iitem> {
+  update(id: number, item: Iitem): Observable<Iitem> {
     return this.http.put<Iitem>(
     `${this.url}/resources/` + id , item
     );

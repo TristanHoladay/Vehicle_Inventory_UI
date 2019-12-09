@@ -44,14 +44,14 @@ export class ResourcesComponent implements OnInit {
   
   }
 
-  updateItem(id: number, item: Iitem) {
+  update(id: number, item: Iitem) {
     item.name = "TESTING UPDATE FROM FRONT END";
-    this.itemService.updateItem(id, item).subscribe(data => {
+    this.itemService.update(id, item).subscribe(data => {
       console.log(data);
     });
   }
 
-  deleteItem(id: number) {
+  delete(id: number) {
     this.itemService.delete(id).subscribe(data => {
       console.log(data);
     })

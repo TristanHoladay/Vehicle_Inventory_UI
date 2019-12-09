@@ -5,7 +5,8 @@
             {{ ticket.date }}
             {{ ticket.notes }}
             <div>
-                <button (click)="updateTicket(ticket.id, ticket)">Update</button>
+                <button (click)="update(ticket.id, ticket)">Update</button>
+                <update-modal [updateObject]="ticket"></update-modal>
             </div>
         </div>
     </div>
@@ -15,4 +16,4 @@
         {{ oneTicket.details }}
 </div>
     
-    <button (click)="deleteTicket(4)">Delete</button>
+    <button (click)="delete(4)">Delete</button>

@@ -5,7 +5,7 @@
             {{ vehicle.model }}
             {{ vehicle.notes }}
             <div>
-                <button (click)="updateVehicle(vehicle.id, vehicle)">Update</button>
+                <button (click)="update(vehicle.id, vehicle)">Update</button>
                 <delete-modal [delObject]="vehicle"></delete-modal>
             </div>
         </div>
@@ -16,4 +16,4 @@
         {{ oneVehicle.notes}}
 </div>
     
-    <button (click)="deleteVehicle(3)">Delete</button>
+    <button (click)="delete(3)">Delete</button>

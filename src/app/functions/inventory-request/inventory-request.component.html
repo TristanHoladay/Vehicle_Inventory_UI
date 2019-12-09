@@ -5,7 +5,7 @@
             {{ request.details }}
             {{ request.company }}
             <div>
-                <button (click)="updateRequest(request.id, request)">Update</button>
+                <button (click)="update(request.id, request)">Update</button>
             </div>
         </div>
     </div>
@@ -15,4 +15,4 @@
         {{ oneRequest.details }}
 </div>
     
-    <button (click)="deleteRequest(2)">Delete</button>
+    <button (click)="delete(2)">Delete</button>

@@ -34,15 +34,15 @@ export class VehiclesComponent implements OnInit {
         console.log(this.oneVehicle.id + " " + this.oneVehicle.name);
       });
 
-      this.vehicleService.addVehicle(this.addVehicle).subscribe(data => {
+      this.vehicleService.add(this.addVehicle).subscribe(data => {
         console.log(data);
       });
   
   }
 
-  updateVehicle(id: number, vehicle: Ivehicles) {
+  update(id: number, vehicle: Ivehicles) {
     vehicle.notes = "TESTING UPDATE FROM FRONT END";
-    this.vehicleService.updateVehicle(id, vehicle).subscribe(data => {
+    this.vehicleService.update(id, vehicle).subscribe(data => {
       console.log(data);
     });
   }

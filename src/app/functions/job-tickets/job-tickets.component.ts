@@ -36,20 +36,20 @@ export class JobTicketsComponent implements OnInit {
         console.log(this.oneTicket.id + " " + this.oneTicket.company);
       });
 
-      this.ticketService.addTicket(this.addTicket).subscribe(data => {
+      this.ticketService.add(this.addTicket).subscribe(data => {
         console.log(data);
       });
   
   }
 
-  updateTicket(id: number, ticket: IjobTicket) {
+  update(id: number, ticket: IjobTicket) {
     ticket.notes = "TESTING UPDATE FROM FRONT END";
-    this.ticketService.updateTickets(id, ticket).subscribe(data => {
+    this.ticketService.update(id, ticket).subscribe(data => {
       console.log(data);
     });
   }
 
-  deleteTicket(id: number) {
+  delete(id: number) {
     this.ticketService.delete(id).subscribe(data => {
       console.log(data);
     });

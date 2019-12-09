@@ -45,14 +45,14 @@ export class UsersComponent implements OnInit {
   }
 
 
-  updateUser(id: string, user: IUser) {
+  update(id: string, user: IUser) {
     user.firstName = "TESTING UPDATE FROM FRONT END";
-    this.userService.updateUser(id, user).subscribe(data => {
+    this.userService.update(id, user).subscribe(data => {
       console.log(data);
     });
   }
 
-  deleteUser(id: string) {
+  delete(id: string) {
     this.userService.delete(id).subscribe(data => {
       console.log(data);
     });

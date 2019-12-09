@@ -33,7 +33,7 @@ export class UserService {
     );
   }
 
-  updateUser(id: string, user: IUser): Observable<IUser> {
+  update(id: string, user: IUser): Observable<IUser> {
     return this.http.put<IUser>(
     `${this.url}/users/` + id , user
     );

@@ -5,7 +5,7 @@
             {{ user.jobDescription }}
             {{ user.adminRole }}
             <div>
-                <button (click)="updateUser(user.id, user)">Update</button>
+                <button (click)="update(user.id, user)">Update</button>
             </div>
         </div>
     </div>
@@ -15,4 +15,4 @@
         {{ oneUser.fullName }}
 </div>
     
-    <button (click)="deleteUser(3)">Delete</button>
+    <button (click)="delete(3)">Delete</button>

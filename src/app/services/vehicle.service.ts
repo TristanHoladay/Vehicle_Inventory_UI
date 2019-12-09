@@ -28,13 +28,13 @@ export class VehicleService {
   }
 
 
-  addVehicle(vehicle: Ivehicles): Observable<Ivehicles> {
+  add(vehicle: Ivehicles): Observable<Ivehicles> {
     return this.http.post<Ivehicles>(
       `${this.url}/vehicles`, vehicle
     );
   }
 
-  updateVehicle(id: number, vehicle: Ivehicles): Observable<Ivehicles> {
+  update(id: number, vehicle: Ivehicles): Observable<Ivehicles> {
     return this.http.put<Ivehicles>(
     `${this.url}/vehicles/` + id , vehicle
     );

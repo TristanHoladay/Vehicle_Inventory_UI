@@ -28,13 +28,13 @@ export class InventoryrequestService {
   }
 
 
-  addRequest(request: IRequest): Observable<IRequest> {
+  add(request: IRequest): Observable<IRequest> {
     return this.http.post<IRequest>(
       `${this.url}/requests`, request
     );
   }
 
-  updateRequest(id: number, request: IRequest): Observable<IRequest> {
+  update(id: number, request: IRequest): Observable<IRequest> {
     return this.http.put<IRequest>(
     `${this.url}/requests/` + id , request
     );

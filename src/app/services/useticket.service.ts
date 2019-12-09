@@ -28,13 +28,13 @@ export class UseticketService {
   }
 
 
-  addTicket(ticket: IjobTicket): Observable<IjobTicket> {
+  add(ticket: IjobTicket): Observable<IjobTicket> {
     return this.http.post<IjobTicket>(
       `${this.url}/usetickets`, ticket
     );
   }
 
-  updateTickets(id: number, ticket: IjobTicket): Observable<IjobTicket> {
+  update(id: number, ticket: IjobTicket): Observable<IjobTicket> {
     return this.http.put<IjobTicket>(
     `${this.url}/usetickets/` + id , ticket
     );

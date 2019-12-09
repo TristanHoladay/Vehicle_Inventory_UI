@@ -28,13 +28,13 @@ export class CompanyService {
     }
 
   
-    addCompany(user: ICompany): Observable<ICompany> {
+    add(user: ICompany): Observable<ICompany> {
       return this.http.post<ICompany>(
         `${this.url}/companies`, user
       );
     }
   
-    updateCompany(id: number, company: ICompany): Observable<ICompany> {
+    update(id: number, company: ICompany): Observable<ICompany> {
       return this.http.put<ICompany>(
       `${this.url}/companies/` + id , company
       );

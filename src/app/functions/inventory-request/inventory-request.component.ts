@@ -38,20 +38,20 @@ export class InventoryRequestComponent implements OnInit {
         console.log(this.oneRequest.id + " " + this.oneRequest.company);
       });
 
-      this.reqService.addRequest(this.addRequest).subscribe(data => {
+      this.reqService.add(this.addRequest).subscribe(data => {
         console.log(data);
       })
   
   }
 
-  updateRequest(id: number, request: IRequest) {
+  update(id: number, request: IRequest) {
     request.details = "TESTING UPDATE FROM FRONT END";
-    this.reqService.updateRequest(id, request).subscribe(data => {
+    this.reqService.update(id, request).subscribe(data => {
       console.log(data);
     });
   }
 
-  deleteRequest(id: number) {
+  delete(id: number) {
     this.reqService.delete(id).subscribe(data => {
       console.log(data);
     })
