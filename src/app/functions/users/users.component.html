@@ -1,18 +1,14 @@
 <div *ngFor="let user of Users">
+    <div>
+        {{ user.id }}
+        {{ user.fullName }}
+        {{ user.jobDescription }}
+        {{ user.adminRole }}
         <div>
-            {{ user.id }}
-            {{ user.fullName }}
-            {{ user.jobDescription }}
-            {{ user.adminRole }}
-            <div>
-                <button (click)="update(user.id, user)">Update</button>
-            </div>
+            <update-modal [updateObject]="user"></update-modal>
         </div>
     </div>
-    <br>
-    <div>
-        {{ oneUser.id }}
-        {{ oneUser.fullName }}
 </div>
+<br>
+<creation-modal [creationObject]="addUser"></creation-modal>
     
-    <button (click)="delete(3)">Delete</button>

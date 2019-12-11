@@ -19,11 +19,10 @@ export class CompaniesComponent implements OnInit {
     private compService: CompanyService
   ) { }
 
-  oneCompany: ICompany;
   addCompany: ICompany =  {
     id: 1,
-    name: "Discovery Healthcare Group",
-    status: "Fully Managed",
+    name: "",
+    status: "",
     compT: null
   }
 
@@ -32,15 +31,6 @@ export class CompaniesComponent implements OnInit {
     this.compService.getAllCompanies().subscribe(data => {
       this.companies = data;
     });
-
-      this.compService.getCompanyById(2).subscribe(data => {
-        this.oneCompany = data;
-        console.log(this.oneCompany.id + " " + this.oneCompany.name);
-      });
-
-      //  this.compService.addCompany(this.addCompany).subscribe(data => {
-      //   console.log(data);
-      //  })
   
   }
 

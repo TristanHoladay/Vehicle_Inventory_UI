@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { IUser } from '../interfaces/iuser';
 import decode from 'jwt-decode';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UrlService } from './url.service';
 
 
 
@@ -12,13 +13,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+  url: string = this.URL.getURL();
 
   private currentUserSubject: BehaviorSubject<IUser>;
   private currentUser: Observable<IUser>;
 
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private URL: UrlService
     ) { 
     this.currentUserSubject = new BehaviorSubject<IUser>(
       JSON.parse(localStorage.getItem("currentUser"))
@@ -45,16 +48,9 @@ export class AuthService {
    }
   
 
-  register(user: any): Observable<IUser> {
-    return this.http.post<IUser>(
-      "https://localhost:44314/api/auth/register",
-      user
-    );
-  }
-
   login(email: string, password: string) {
     return this.http
-      .post<IUser>("https://localhost:44314/api/auth/login", {email: email, password: password})
+      .post<IUser>(`${this.url}/auth/login`, {email: email, password: password})
       .pipe(
         map(user => {
 

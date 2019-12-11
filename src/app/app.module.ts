@@ -36,6 +36,7 @@ import { CompaniesComponent } from './functions/companies/companies.component';
 import { InventoryRequestComponent } from './functions/inventory-request/inventory-request.component';
 import { DeleteModal } from './modals/delete/delete.component';
 import { UpdateModal } from './modals/update/update.component';
+import { CreationComponent } from './modals/creation/creation.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -56,7 +57,8 @@ export function tokenGetter() {
     CompaniesComponent,
     InventoryRequestComponent,
     DeleteModal,
-    UpdateModal
+    UpdateModal,
+    CreationComponent
   ],
   imports: [
     BrowserModule,
