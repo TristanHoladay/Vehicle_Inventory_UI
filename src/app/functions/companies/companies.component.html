@@ -6,7 +6,7 @@
           {{ company.name }}
           {{ company.status }}
           <div>
-              <button (click)="updateCompany(company.id, company)">Update</button>
+              <button (click)="update(company.id, company)">Update</button>
               <update-modal [updateObject]="company"></update-modal>
               <delete-modal [delObject]="company"></delete-modal>
           </div>

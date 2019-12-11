@@ -44,7 +44,7 @@ export class CompaniesComponent implements OnInit {
   
   }
 
-  updateCompany(id: number, company: ICompany) {
+  update(id: number, company: ICompany) {
     company.name = "Updated Company Name";
     this.compService.update(id, company).subscribe(data => {
       console.log(data);

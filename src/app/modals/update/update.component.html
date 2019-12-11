@@ -23,9 +23,9 @@
     </div>
     <div class="modal-footer">
       <button
-        type="button"
+        type="submit"
         class="btn btn-danger btn-sm"
-        (click)="[update(updateObject), modal.close('Save click')]"
+        (click)="[update(form.value) ,modal.close('Save click')]"
       >
         Yes Update
       </button>

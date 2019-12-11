@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DiscriminatorService } from 'src/app/services/discriminator.service';
 
 @Component({
   selector: 'update-modal',
@@ -12,9 +13,11 @@ export class UpdateModal implements OnInit {
   form: FormGroup;
   objectProps: string[];
   closeResult: string;
+  service: any;
   
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private discService: DiscriminatorService
   ) { }
 
   ngOnInit() {
@@ -29,6 +32,18 @@ export class UpdateModal implements OnInit {
     this.objectProps = Object.keys(this.updateObject);
     this.objectProps.forEach( function(value) {
       console.log(value);
+    });
+
+    this.discService.getObjectType(this.updateObject);
+    this.service = this.discService.objectService;
+  }
+
+
+  update(objectData) {
+    var id = objectData.id;
+    console.log(objectData);
+    this.service.update(id, objectData).subscribe(data => {
+      console.log(data);
     });
   }
 
