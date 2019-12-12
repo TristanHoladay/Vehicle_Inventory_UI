@@ -5,15 +5,11 @@
             {{ ticket.date }}
             {{ ticket.notes }}
             <div>
-                <button (click)="update(ticket.id, ticket)">Update</button>
+                
                 <update-modal [updateObject]="ticket"></update-modal>
             </div>
         </div>
     </div>
     <br>
-    <div>
-        {{ oneTicket.id }}
-        {{ oneTicket.details }}
-</div>
     
-    <button (click)="delete(4)">Delete</button>
+

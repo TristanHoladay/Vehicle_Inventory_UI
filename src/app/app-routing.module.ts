@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'create-item', component: ItemCreationComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'tickets', component: JobTicketsComponent },
-  { path: 'utcreation', component: UseticketCreationComponent },
+  { path: 'create-ticket', component: UseticketCreationComponent },
   { path: '**', component: PageNotFoundComponent}
 
 ];
