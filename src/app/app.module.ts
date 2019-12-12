@@ -6,7 +6,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 //import { tokenNotExpired } from 'angular2-jwt';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatAutocompleteModule, MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +39,8 @@ import { InventoryRequestComponent } from './functions/inventory-request/invento
 import { DeleteModal } from './modals/delete/delete.component';
 import { UpdateModal } from './modals/update/update.component';
 import { CreationComponent } from './modals/creation/creation.component';
+import { ItemCreationComponent } from './creations/item-creation/item-creation.component';
+import { UseticketCreationComponent } from './creations/useticket-creation/useticket-creation.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -58,7 +62,9 @@ export function tokenGetter() {
     InventoryRequestComponent,
     DeleteModal,
     UpdateModal,
-    CreationComponent
+    CreationComponent,
+    ItemCreationComponent,
+    UseticketCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +79,8 @@ export function tokenGetter() {
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    FormlyModule.forRoot(),
+    FormlyMaterialModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

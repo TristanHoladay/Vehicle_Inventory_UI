@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from 'src/app/services/item.service';
 import { Iitem } from 'src/app/interfaces/iitem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resources',
@@ -9,39 +10,21 @@ import { Iitem } from 'src/app/interfaces/iitem';
 })
 export class ResourcesComponent implements OnInit {
   Items: Iitem[] = [];
-  oneItem: Iitem;
-  addItem: Iitem =  {
-    id: 1,
-    name: "HP Notebook",
-    description: "the description",
-    amount: 1,
-    cost: 700,
-    resourceTypeId: 2,
-    resourceType: null,
-    storageLocation: "armory",
-    companyId: 1,
-    company: null,
-    vehicleId: 0,
-    vehicle: null,
-    useTicketId: 0,
-    useTicket: null,
-    itemT: null
-  }
 
   constructor(
-    private itemService: ItemService
+    private itemService: ItemService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.itemService.getAllItems(1).subscribe(data => {
       this.Items = data;
     });
-
-      this.itemService.getItemById(9).subscribe(data => {
-        this.oneItem = data;
-        console.log(this.oneItem.id + " " + this.oneItem.company);
-      });
   
+  }
+
+  create(){
+    this.router.navigate(['create-item']);
   }
 
   update(id: number, item: Iitem) {

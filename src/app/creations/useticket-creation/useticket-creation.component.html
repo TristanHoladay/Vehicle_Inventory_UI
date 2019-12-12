@@ -1,0 +1,6 @@
+<div class="form-group">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
+        <button mat-raised-button color="primary">Submit</button>
+    </form>
+</div>

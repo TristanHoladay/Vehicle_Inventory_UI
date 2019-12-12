@@ -31,6 +31,7 @@ export class CreationComponent implements OnInit {
     console.log(this.form);
 
     this.objectProps = Object.keys(this.creationObject);
+    console.log(this.discService.formObject);
     this.objectProps.forEach( function(value) {
       console.log(value);
     });

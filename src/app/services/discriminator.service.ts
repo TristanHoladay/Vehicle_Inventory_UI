@@ -21,6 +21,7 @@ import { UservehiclesService } from './uservehicles.service';
 })
 export class DiscriminatorService {
   objectService: any;
+  formObject: any;
 
   constructor(
     private userService: UserService,
@@ -36,6 +37,14 @@ export class DiscriminatorService {
   getObjectType(object: IUser | ICompany | Ivehicles | IRequest | Iitem | IUserVehicles | IjobTicket | IResourceType) {
     if ("userT" in object) {
       this.objectService = this.userService;
+      this.formObject = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        jobDescription: "",
+        adminRole: null
+      }
     }
 
     if ("compT" in object) {

@@ -13,6 +13,8 @@ import { UserHomePageComponent } from './user-home-page/user-home-page.component
 import { CompaniesComponent } from './functions/companies/companies.component';
 import { InventoryRequestComponent } from './functions/inventory-request/inventory-request.component';
 import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
+import { UseticketCreationComponent } from './creations/useticket-creation/useticket-creation.component';
+import { ItemCreationComponent } from './creations/item-creation/item-creation.component';
 
 
 const routes: Routes = [
@@ -32,8 +34,10 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesComponent },
   { path: 'requests', component: InventoryRequestComponent },
   { path: 'resources', component: ResourcesComponent },
+  { path: 'create-item', component: ItemCreationComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'tickets', component: JobTicketsComponent },
+  { path: 'utcreation', component: UseticketCreationComponent },
   { path: '**', component: PageNotFoundComponent}
 
 ];
