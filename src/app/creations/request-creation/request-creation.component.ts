@@ -10,46 +10,39 @@ import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
 import { UseticketService } from 'src/app/services/useticket.service';
 import { AuthService } from 'src/app/services/auth-service.service';
+import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
 
 @Component({
-  selector: 'useticket-creation',
-  templateUrl: './useticket-creation.component.html',
-  styleUrls: ['./useticket-creation.component.css']
+  selector: 'app-request-creation',
+  templateUrl: './request-creation.component.html',
+  styleUrls: ['./request-creation.component.css']
 })
-export class UseticketCreationComponent implements OnInit {
-  form = new FormGroup({});
-  options: FormlyFormOptions = {};
-  items: [];
-  token: string;
+export class RequestCreationComponent implements OnInit {
+form = new FormGroup({});
+options: FormlyFormOptions = {};
+token: string;
 
-  model: any = {
+  model = {
     id: 1,
-    tisNumber: "",
+    details: "",
     date: Date.now(),
-    notes: "",
-    userId: "",
-    user: "",
+    complete: false,
     companyId: 0,
     company: "",
-    ticketT: "",
+    resourceTypeId: 0,
+    resourceType: "",
+    userId: "",
+    user: "",
+    requestT: "",
   }
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'tisNumber',
-      type: 'input',
-      templateOptions: {
-        label: 'ConnectWise Ticket #',
-        type: 'number',
-        required: true
-      }
-    },
-    {
-      key: 'notes',
+      key: 'details',
       type: 'textarea',
       templateOptions: {
-        label: 'Notes',
-        max: 300
+        label: 'Request Details',
+        required: true
       }
     },
     {
@@ -62,17 +55,24 @@ export class UseticketCreationComponent implements OnInit {
         labelProp: 'name'
       }
     },
+    {
+      key: 'resourceTypeId',
+      type: 'select',
+      templateOptions: {
+        label: 'Resource Type',
+        options: this.rtService.getAllResourceTypes(),
+        valueProp: 'id',
+        labelProp: 'name'
+      }
+    },
   ];
-  
 
   constructor(
     private authService: AuthService,
-    private itemService: ItemService,
-    private ticketService: UseticketService,
+    private router: Router,
+    private requestService: InventoryrequestService,
     private companyService: CompanyService,
     private rtService: ResourcetypeService,
-    private vehicleService: VehicleService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -81,10 +81,11 @@ export class UseticketCreationComponent implements OnInit {
 
   onSubmit(form) {
     form.value.userId = this.token['sub'];
-    console.log(form.value)
-    this.ticketService.add(form.value).subscribe(data => {
+    this.requestService.add(form.value).subscribe(data => {
       console.log(data);
-      this.router.navigate(['tickets']);
     });
+
+    this.router.navigate(['requests']);
   }
+
 }

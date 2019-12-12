@@ -15,6 +15,7 @@ import { InventoryRequestComponent } from './functions/inventory-request/invento
 import { JobTicketsComponent } from './functions/job-tickets/job-tickets.component';
 import { UseticketCreationComponent } from './creations/useticket-creation/useticket-creation.component';
 import { ItemCreationComponent } from './creations/item-creation/item-creation.component';
+import { RequestCreationComponent } from './creations/request-creation/request-creation.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'companies', component: CompaniesComponent },
   { path: 'requests', component: InventoryRequestComponent },
+  { path: 'create-request', component: RequestCreationComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'create-item', component: ItemCreationComponent },
   { path: 'reports', component: ReportsComponent },

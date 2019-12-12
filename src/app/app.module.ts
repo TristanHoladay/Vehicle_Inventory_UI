@@ -41,6 +41,7 @@ import { UpdateModal } from './modals/update/update.component';
 import { CreationComponent } from './modals/creation/creation.component';
 import { ItemCreationComponent } from './creations/item-creation/item-creation.component';
 import { UseticketCreationComponent } from './creations/useticket-creation/useticket-creation.component';
+import { RequestCreationComponent } from './creations/request-creation/request-creation.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +65,8 @@ export function tokenGetter() {
     UpdateModal,
     CreationComponent,
     ItemCreationComponent,
-    UseticketCreationComponent
+    UseticketCreationComponent,
+    RequestCreationComponent
   ],
   imports: [
     BrowserModule,
