@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { ICompany } from '../interfaces/icompany';
 import { Observable } from 'rxjs';
 import { UrlService } from './url.service';
+import { IjobTicket } from '../interfaces/ijob-ticket';
+import { IRequest } from '../interfaces/irequest';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,18 @@ export class CompanyService {
     delete(id: number): Observable<ICompany> {
       return this.http.delete<ICompany>(
         `${this.url}/companies/` + id
+      );
+    }
+
+    getTicketsbyCompany(id: number): Observable<any[]> {
+      return this.http.get<any[]>(
+        `${this.url}/companies/${id}/tickets`
+      );
+    }
+
+    getRequestsByCompany(id: number): Observable<any[]> {
+      return this.http.get<IRequest[]>(
+        `${this.url}/companies/${id}/requests`
       );
     }
 }

@@ -10,6 +10,7 @@ header {
 }
 
 body { 
+    height: 100%;
     margin: 0, 1em, 1em, 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }

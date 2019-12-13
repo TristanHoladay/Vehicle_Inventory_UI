@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { UrlService } from './url.service';
 import { HttpClient } from '@angular/common/http';
 import { IResourceType } from '../interfaces/resource-type';
+import { Iitem } from '../interfaces/iitem';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,12 @@ export class ResourcetypeService {
   delete(id: number): Observable<IResourceType> {
     return this.http.delete<IResourceType>(
       `${this.url}/resourcetype/` + id
+    );
+  }
+
+  getItemsByResourceType(id: number): Observable<any[]> {
+    return this.http.get<Iitem[]>(
+      `${this.url}/resourcetype/${id}/items`
     );
   }
 }

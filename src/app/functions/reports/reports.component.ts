@@ -12,6 +12,8 @@ import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { ICompany } from 'src/app/interfaces/icompany';
 import { IUser } from 'src/app/interfaces/iuser';
 import { IResourceType } from 'src/app/interfaces/resource-type';
+import { IjobTicket } from 'src/app/interfaces/ijob-ticket';
+import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reports',
@@ -25,6 +27,12 @@ resourceType: boolean = false;
 selectedId: boolean = false;
 objectId: any;
 
+
+dataSource: MatTableDataSource<Object>;
+rows: object[];
+columns: string[];
+myControl = new FormControl();
+
 companies: ICompany[];
 users: IUser[];
 types: IResourceType[];
@@ -32,16 +40,21 @@ types: IResourceType[];
   //data source equals the data presented after user decides what data they want
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private companyService: CompanyService,
     private itemService: ItemService,
     private ticketService: UseticketService,
     private requestService: InventoryrequestService,
     private vehicleService: VehicleService,
-    private rtService: ResourcetypeService
+    private rtService: ResourcetypeService,
   ) { }
 
   ngOnInit() {
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+
+    // })
   }
 
   fetchData(object: string) {
@@ -87,10 +100,48 @@ types: IResourceType[];
   }
 
   
-  createDataSource() {
-    
+  createDataSource(type: string) {
+    console.log(this.objectId);
+    if(type == 'tickets' && this.company) {
+      this.companyService.getTicketsbyCompany(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
+    } else {
+      this.userService.getTicketsByUser(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
     }
 
+    if(type == 'requests' && this.company) {
+      this.companyService.getRequestsByCompany(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
+    } else {
+      this.userService.getRequestsByUser(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
+    }
 
+    if(type == 'items' && this.company) {
+      this.itemService.getAllItems(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
+    } else {
+      this.rtService.getItemsByResourceType(this.objectId).subscribe(data => {
+        this.rows = data;
+      });
+    }
+
+      this.dataSource = new MatTableDataSource<Object>(this.rows);
+  }
+
+GenerateColumns() {
+    this.columns = Object.keys(this.rows[0]);
+    console.log(this.columns);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

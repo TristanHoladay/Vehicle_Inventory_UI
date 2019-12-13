@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { UrlService } from './url.service';
 import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/iuser';
+import { IjobTicket } from '../interfaces/ijob-ticket';
+import { IRequest } from '../interfaces/irequest';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +44,18 @@ export class UserService {
   delete(id: string): Observable<IUser> {
     return this.http.delete<IUser>(
       `${this.url}/users/` + id
+    );
+  }
+
+  getTicketsByUser(id: string): Observable<any[]> {
+    return this.http.get<IjobTicket[]>(
+      `${this.url}/users/${id}/tickets`
+    );
+  }
+
+  getRequestsByUser(id: string): Observable<any[]> {
+    return this.http.get<IRequest[]>(
+      `${this.url}/users/${id}/requests`
     );
   }
 
