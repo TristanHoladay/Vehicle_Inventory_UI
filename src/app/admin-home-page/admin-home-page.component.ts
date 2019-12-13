@@ -13,9 +13,4 @@ export class AdminHomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  //Users: list, create, update, delete
-
-  //vehicles: list, crate, update, delete
-
-
 }

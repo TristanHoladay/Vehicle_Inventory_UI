@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth-service.service';
 import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
 
 @Component({
-  selector: 'app-request-creation',
+  selector: 'request-creation',
   templateUrl: './request-creation.component.html',
   styleUrls: ['./request-creation.component.css']
 })

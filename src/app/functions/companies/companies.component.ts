@@ -12,7 +12,6 @@ import { IUser } from 'src/app/interfaces/iuser';
 })
 export class CompaniesComponent implements OnInit {
   companies: ICompany[] = [];
-  users: IUser[] = [];
 
   constructor(
     private http: HttpClient,
@@ -32,19 +31,6 @@ export class CompaniesComponent implements OnInit {
       this.companies = data;
     });
   
-  }
-
-  update(id: number, company: ICompany) {
-    company.name = "Updated Company Name";
-    this.compService.update(id, company).subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  delete(id: number) {
-    this.compService.delete(id).subscribe(data => {
-      console.log(data);
-    })
   }
 
 }

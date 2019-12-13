@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UseticketService } from 'src/app/services/useticket.service';
 import { IjobTicket } from 'src/app/interfaces/ijob-ticket';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-tickets',
@@ -12,7 +13,8 @@ export class JobTicketsComponent implements OnInit {
 
 
   constructor(
-    private ticketService: UseticketService
+    private ticketService: UseticketService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,17 +24,8 @@ export class JobTicketsComponent implements OnInit {
   
   }
 
-  update(id: number, ticket: IjobTicket) {
-    ticket.notes = "TESTING UPDATE FROM FRONT END";
-    this.ticketService.update(id, ticket).subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  delete(id: number) {
-    this.ticketService.delete(id).subscribe(data => {
-      console.log(data);
-    });
-  }
+create() {
+  this.router.navigateByUrl("create-ticket");
+}
 
 }

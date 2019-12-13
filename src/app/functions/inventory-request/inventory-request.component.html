@@ -1,12 +1,50 @@
-
-<div *ngFor="let request of requests">
+<header>
+        <div class="row home-nav">
+          <div class="col-sm home-btn">
+              <a routerLink="/admin" routerLinkActive><button class="btn btn-primary">Home</button></a>
+          </div>
+          <div class="col-sm logo">
+            <h1>TrackIT</h1>
+          </div>
+          <div class="logout-btn" class="col-2">
+            <button class="btn btn-secondary" (click)="logOut()">Log Out</button>
+          </div>
+        </div>
+        <div class="nav-container">
+          <nav class="row">
+            <ul class="nav-ul">
+              <li class="nav-btn"><a routerLink="/users" routerLinkActive><button class="btn-primary">Users</button></a></li>
+              <li class="nav-btn"><a routerLink="/companies" routerLinkActive><button class="btn-primary">Companies</button></a></li>
+              <li class="nav-btn"><a routerLink="/resources" routerLinkActive><button class="btn-primary">Resources</button></a></li>
+              <li class="nav-btn"><a routerLink="/" routerLinkActive><button class="btn-primary">Resourc Types</button></a></li>
+              <li class="nav-btn"><a routerLink="/vehicles" routerLinkActive><button class="btn-primary">Vehicles</button></a></li>
+              <li class="nav-btn"><a routerLink="/tickets" routerLinkActive><button class="btn-primary">Tickets</button></a></li>
+              <li class="nav-btn"><a routerLink="/requests" routerLinkActive><button class="btn-primary">Requests</button></a></li>
+              <li class="nav-btn"><a routerLink="/reports" routerLinkActive><button class="btn-primary">Reports</button></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
         <div>
-            {{ request.id }}
-            {{ request.details }}
-            {{ request.company }}
+          <h1>Create A New Inventory Request</h1>
+            <button class="btn btn-lg btn-outline-primary" (click)="create()">Create</button>
+        </div>
+        <br>
+        
+        <div class="objects-container">
+          <h1>Update Current Inventory Requests</h1>
+        <div *ngFor="let request of requests">
             <div>
-                
+                <label class="object-labels"><strong>Details:</strong> {{ request.details}} </label>
+                <label class="object-labels"><strong>Resource Type:</strong> {{ request.resourceType }} </label>
+                <label class="object-labels"><strong>Date:</strong> {{ request.date }} </label>
+                <label class="object-labels"><strong>Company:</strong> {{ request.company }} </label>
+                <label class="object-labels"><strong>User: </strong> {{ request.user }} </label>
+                <label class="object-labels"><strong>Complete:</strong> {{ request.complete }} </label>
+                <div>
+                    <update-modal [updateObject]="request"></update-modal>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
+        <br>

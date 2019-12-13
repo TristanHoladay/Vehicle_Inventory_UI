@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
-  Items: Iitem[] = [];
+  items: Iitem[] = [];
 
   constructor(
     private itemService: ItemService,
@@ -18,26 +18,13 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit() {
     this.itemService.getAllItems(1).subscribe(data => {
-      this.Items = data;
+      this.items = data;
     });
   
   }
 
   create(){
     this.router.navigate(['create-item']);
-  }
-
-  update(id: number, item: Iitem) {
-    item.name = "TESTING UPDATE FROM FRONT END";
-    this.itemService.update(id, item).subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  delete(id: number) {
-    this.itemService.delete(id).subscribe(data => {
-      console.log(data);
-    })
   }
   
 

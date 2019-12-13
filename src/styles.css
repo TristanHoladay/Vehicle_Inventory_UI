@@ -1,23 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html { height: 100%; }
 
 header {
-    height: 7em;
+    height: auto;
     width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(18, 46, 77);
+    border: 2px solid black;
+}
+
+.home-nav {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 2em, 0, 2em;
+}
+
+.home-btn {
+    margin: 1em 1em;
+}
+
+.logo {
+    color: white;
+    margin-top: 1em;
+}
+
+.logout-btn {
+    margin: 1em, 0, 0, 1em;
+    border: 2px solid black;
+}
+
+
+.nav-container {
+    margin-left: 12em;
+    width: 75%;
+}
+
+.nav-ul {
+    margin-top: 3em;
+    margin-bottom: 0em;
+    display: block;
+    list-style: none;
+    width: 90%;
+}
+
+.nav-btn {
+    display: inline-block;
+    margin: 0 .5em;
     margin-bottom: 2em;
-    border-bottom: 3px solid blue;
 }
 
 body { 
+    box-sizing: border-box;
+    width: 100%;
     height: 100%;
-    margin: 0, 1em, 1em, 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }
 
 footer {
     background-color: blue;
-    width: 100%;
+    width: 50%;
     height: 4em;
     margin-top: 1em;
+}
+
+.object-table-container {
+    width: 95%;
+    margin: 0em 2em;
+    background-color: rgb(16,102,201);
+}
+
+.object-table {
+    width: 80%;
+    margin-left: 5em;
+    box-sizing: border-box;
+}
+
+.objects-container {
+    display: flexbox;
+    flex-direction: column;
+    margin: 0 2em;
+}
+
+.object-labels {
+    margin-right: 1em;
 }

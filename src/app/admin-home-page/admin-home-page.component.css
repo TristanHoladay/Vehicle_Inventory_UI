@@ -1,0 +1,15 @@
+main {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: reapeating(4, 1fr);
+}
+
+.navigation-card {
+    width: 10em;
+    height: 10em;
+    background-image: url();
+}
+

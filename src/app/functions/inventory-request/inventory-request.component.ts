@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IRequest } from 'src/app/interfaces/irequest';
 import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-request',
@@ -11,7 +12,8 @@ export class InventoryRequestComponent implements OnInit {
   requests: IRequest[] = [];
 
   constructor(
-    private reqService: InventoryrequestService
+    private reqService: InventoryrequestService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -19,6 +21,10 @@ export class InventoryRequestComponent implements OnInit {
       this.requests = data;
     });
   
+  }
+
+  create() {
+    this.router.navigateByUrl("create-request");
   }
 
 }

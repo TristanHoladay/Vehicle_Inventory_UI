@@ -1,14 +1,47 @@
+<header>
+        <div class="row home-nav">
+          <div class="col-sm home-btn">
+              <a routerLink="/admin" routerLinkActive><button class="btn btn-primary">Home</button></a>
+          </div>
+          <div class="col-sm logo">
+            <h1>TrackIT</h1>
+          </div>
+          <div class="logout-btn" class="col-2">
+            <button class="btn btn-secondary" (click)="logOut()">Log Out</button>
+          </div>
+        </div>
+        <div class="nav-container">
+          <nav class="row">
+            <ul class="nav-ul">
+              <li class="nav-btn"><a routerLink="/users" routerLinkActive><button class="btn-primary">Users</button></a></li>
+              <li class="nav-btn"><a routerLink="/companies" routerLinkActive><button class="btn-primary">Companies</button></a></li>
+              <li class="nav-btn"><a routerLink="/resources" routerLinkActive><button class="btn-primary">Resources</button></a></li>
+              <li class="nav-btn"><a routerLink="/" routerLinkActive><button class="btn-primary">Resourc Types</button></a></li>
+              <li class="nav-btn"><a routerLink="/vehicles" routerLinkActive><button class="btn-primary">Vehicles</button></a></li>
+              <li class="nav-btn"><a routerLink="/tickets" routerLinkActive><button class="btn-primary">Tickets</button></a></li>
+              <li class="nav-btn"><a routerLink="/requests" routerLinkActive><button class="btn-primary">Requests</button></a></li>
+              <li class="nav-btn"><a routerLink="/reports" routerLinkActive><button class="btn-primary">Reports</button></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+<div>
+  <h1>Create A New User</h1>
+    <creation-modal [creationObject]="addUser"></creation-modal>
+</div>
+
+<div class="objects-container">
+  <h1>Update Current Users</h1>
 <div *ngFor="let user of Users">
     <div>
-        {{ user.id }}
-        {{ user.fullName }}
-        {{ user.jobDescription }}
-        {{ user.adminRole }}
+        <label class="object-labels"><strong>Name:</strong> {{ user.fullName }} </label>
+        <label class="object-labels"><strong>Job Description</strong> {{ user.jobDescription }} </label>
+        <label class="object-labels"><strong>Admin? </strong> {{ user.adminRole }} </label>
         <div>
             <update-modal [updateObject]="user"></update-modal>
         </div>
     </div>
 </div>
 <br>
-<creation-modal [creationObject]="addUser"></creation-modal>
     

@@ -1,7 +1,40 @@
+<header>
+    <div class="row home-nav">
+      <div class="col-sm home-btn">
+          <a routerLink="/admin" routerLinkActive><button class="btn btn-primary">Home</button></a>
+      </div>
+      <div class="col-sm logo">
+        <h1>TrackIT</h1>
+      </div>
+      <div class="logout-btn" class="col-2">
+        <button class="btn btn-secondary" (click)="logOut()">Log Out</button>
+      </div>
+    </div>
+    <div class="nav-container">
+      <nav class="row">
+        <ul class="nav-ul">
+          <li class="nav-btn"><a routerLink="/users" routerLinkActive><button class="btn-primary">Users</button></a></li>
+          <li class="nav-btn"><a routerLink="/companies" routerLinkActive><button class="btn-primary">Companies</button></a></li>
+          <li class="nav-btn"><a routerLink="/resources" routerLinkActive><button class="btn-primary">Resources</button></a></li>
+          <li class="nav-btn"><a routerLink="/" routerLinkActive><button class="btn-primary">Resourc Types</button></a></li>
+          <li class="nav-btn"><a routerLink="/vehicles" routerLinkActive><button class="btn-primary">Vehicles</button></a></li>
+          <li class="nav-btn"><a routerLink="/tickets" routerLinkActive><button class="btn-primary">Tickets</button></a></li>
+          <li class="nav-btn"><a routerLink="/requests" routerLinkActive><button class="btn-primary">Requests</button></a></li>
+          <li class="nav-btn"><a routerLink="/reports" routerLinkActive><button class="btn-primary">Reports</button></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div>
+    <h1>Run Reporting</h1>
+  </div>
+  
 <div id="selectors-container" class="row">
         <div class="col-sm">
                 <div>
                   <div ngbDropdown class="d-inline-block">
+                    <h4>Select Category</h4>
                     <button class="btn btn-outline-primary" ngbDropdownToggle>Category</button>
                     <div ngbDropdownMenu>
                         <button ngbDropdownItem (click)="fetchData('company')">Companies</button>
@@ -15,6 +48,7 @@
             <div *ngIf="company" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
+                        <h4>Select Company</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Company</button>
                         <div ngbDropdownMenu>
                             <button *ngFor="let company of companies" ngbDropdownItem (click)="catchId(company.id)">{{company.name}}</button>
@@ -26,6 +60,7 @@
             <div *ngIf="user" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
+                        <h4>Select User</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Users</button>
                         <div ngbDropdownMenu>
                             <button *ngFor="let user of users" ngbDropdownItem (click)="catchId(user.id)">{{user.fullName}}</button>
@@ -37,6 +72,7 @@
             <div *ngIf="resourceType" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
+                        <h4>Select Resource Type</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Resource Type</button>
                         <div ngbDropdownMenu>
                             <button *ngFor="let type of types" ngbDropdownItem (click)="[catchId(type.id), createDataSource('items')]">{{type.name}}</button>
@@ -48,7 +84,8 @@
             <div *ngIf="selectedId && company" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Data to Show</button>
+                        <h5>Select Type of Data</h5>
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Type</button>
                         <div ngbDropdownMenu>
                             <button ngbDropdownItem (click)="createDataSource('tickets')">Tickets</button>
                             <button ngbDropdownItem (click)="createDataSource('requests')">Inventory Requests</button>
@@ -61,7 +98,8 @@
             <div *ngIf="selectedId && user" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Data to Show</button>
+                        <h5>Select Type of Data</h5>
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Type</button>
                         <div ngbDropdownMenu>
                             <button ngbDropdownItem (click)="createDataSource('tickets')">Tickets</button>
                             <button ngbDropdownItem (click)="createDataSource('requests')">Inventory Requests</button>
