@@ -1,13 +1,13 @@
 <header>
   <div class="row home-nav">
-    <div class="col-sm home-btn">
+    <div class="col-5 home-btn">
       <a routerLink="/admin" routerLinkActive="active"><button class="btn btn-primary">Home</button></a>
     </div>
     <div class="col-sm logo">
       <h1>TrackIT</h1>
     </div>
-    <div class="logout-btn" class="col-2">
-      <button class="btn btn-secondary" (click)="logOut()">Log Out</button>
+    <div class="logout-btn" class="col-1">
+      <button class="btn btn-warning" (click)="logOut()">Log Out</button>
     </div>
   </div>
   <div class="nav-container">
@@ -25,9 +25,14 @@
     </nav>
   </div>
 </header>
-<main>
-  <div id="greeting">
-    <h1>Let's Track Some Stuff</h1>
+<div id="body-container">
+    <div id="greeting-container" class="card">
+        <div id="greeting">
+            <h1>Let's Get Trackin'</h1>
+        </div> 
+    </div>
+</div>
+
+ 
   
-  </div> 
-</main>
+

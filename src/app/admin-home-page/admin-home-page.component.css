@@ -1,15 +1,31 @@
-main {
-    box-sizing: border-box;
-    width: 100%;
-    margin-top: 3em;
+#body-container {
+    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: reapeating(4, 1fr);
+    justify-content: center;
 }
 
 .navigation-card {
     width: 10em;
     height: 10em;
     background-image: url();
+}
+
+#greeting {
+    height: auto;
+    width: 100%;
+    margin-top: 1em;
+}
+
+#greeting-container {
+    height: 10em;
+    width: 100%;
+    background-color: rgb(0,34,59);
+    position: relative;
+    top: 10em;
+}
+
+#greeting h1 {
+    font-size: 6em;
+    color: white;
 }
 
