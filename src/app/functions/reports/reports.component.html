@@ -1,1 +1,63 @@
-<p>reports works!</p>
+<div class="container">
+        <div class="row">
+                <div class="col">
+                  <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" ngbDropdownToggle>Category</button>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="fetchData('company')">Companies</button>
+                        <button ngbDropdownItem (click)="fetchData('user')">Users</button>
+                        <button ngbDropdownItem (click)="fetchData('resourcetype')">Resource Types</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        
+            <div *ngIf="company" class="row">
+                    <div class="col">
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Company</button>
+                        <div ngbDropdownMenu>
+                            <button *ngFor="let company of companies" ngbDropdownItem (click)="catchId(company.id)">{{company.name}}</button>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+            <div *ngIf="user" class="row">
+                    <div class="col">
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Users</button>
+                        <div ngbDropdownMenu>
+                            <button *ngFor="let user of users" ngbDropdownItem (click)="catchId(user.id)">{{user.fullName}}</button>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+            <div *ngIf="resourceType" class="row">
+                    <div class="col">
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Resource Type</button>
+                        <div ngbDropdownMenu>
+                            <button *ngFor="let type of types" ngbDropdownItem (click)="catchId(type.id)">{{type.name}}</button>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+            <div *ngIf="selectedId && company" class="row">
+                    <div class="col">
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle>Data to Show</button>
+                        <div ngbDropdownMenu>
+                            <button ngbDropdownItem (click)="catchId">Tickets</button>
+                            <button ngbDropdownItem (click)="catchId">Inventory Requests</button>
+                            <button ngbDropdownItem (click)="catchId">Items</button>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+            
+</div>
+
+<div id="break"></div>
