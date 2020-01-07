@@ -11,9 +11,25 @@ import { DiscriminatorService } from 'src/app/services/discriminator.service';
 export class UpdateModal implements OnInit {
   @Input() updateObject: any;
   form: FormGroup;
-  objectProps: string[];
+  objectProps: string[] = [];
   closeResult: string;
   service: any;
+  nonPrintProps: string[] = [
+    "id", 
+    "companyId",
+    "userId", 
+    "resourceTypeId", 
+    "vehicleId", 
+    "useTicketId", 
+    "ticketT", 
+    "itemT", 
+    "compT",
+    "requestT",
+    "userT",
+    "vehicleT",
+    "resourceTypeT",
+    "uvT"
+  ];
   
   constructor(
     private modalService: NgbModal,
@@ -23,18 +39,21 @@ export class UpdateModal implements OnInit {
   ngOnInit() {
     const formDataObject = Object.keys(this.updateObject).reduce((formObj, prop) => {
       formObj[prop] = new FormControl(this.updateObject[prop])
+
+      //if property is NOT found in the nonPrintProp array then add it to objectProps array
+      //which will be used for outputting certain FormControl values to the view
+      if(!this.nonPrintProps.includes(prop)){
+        this.objectProps.push(prop);
+      }
+      
       return formObj;
     }, {});
 
     this.form = new FormGroup(formDataObject);
-    console.log(this.form);
 
-    this.objectProps = Object.keys(this.updateObject);
-    this.objectProps.forEach( function(value) {
-      console.log(value);
-    });
-
+    //use discriminator service to get object type
     this.discService.getObjectType(this.updateObject);
+    //set component service to correct object service, which is determined by discService
     this.service = this.discService.objectService;
   }
 
