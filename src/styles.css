@@ -65,24 +65,40 @@ footer {
     margin-top: 1em;
 }
 
-.object-table-container {
-    width: 95%;
-    margin: 0em 2em;
-    background-color: rgb(16,102,201);
+#options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.object-table {
-    width: 80%;
-    margin-left: 5em;
-    box-sizing: border-box;
+#create-container {
+    margin-top: 1em;
+    margin-left: 2em;
 }
 
-.objects-container {
-    display: flexbox;
+#view-option-container {
+    margin-top: 1em;
+}
+
+#objects-view-container {
+    display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    width: 90%;
+    max-height: 100vh;
     margin: 0 2em;
 }
 
+.object-container {
+    height: auto;
+    width: 40em;
+    border: 1px solid black;
+}
+
 .object-labels {
-    margin-right: 1em;
+    display: block;
+    margin-left: .5em;
+}
+
+.update-modal-container {
+    margin-left: .5em;
 }
