@@ -43,11 +43,13 @@
     <div class="object-container">
         <label class="object-labels"><strong>Name:</strong> {{ user.fullName }} </label>
         <label class="object-labels"><strong>Job Description:</strong> {{ user.jobDescription }} </label>
-        <label class="object-labels"><strong>Admin?: </strong> {{ user.adminRole }} </label>
+        <label class="object-labels"><strong>Role: </strong> {{ adminConvertToString(user) }} </label>
         <div class="update-modal-container">
             <update-modal [updateObject]="user"></update-modal>
         </div>
     </div>
 </div>
+</div>
 <br>
+<app-footer></app-footer>
     

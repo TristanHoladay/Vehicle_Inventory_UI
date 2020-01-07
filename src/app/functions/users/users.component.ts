@@ -41,4 +41,12 @@ export class UsersComponent implements OnInit {
     this.show = true;
   }
 
+  adminConvertToString(user: IUser): string {
+    if(user.adminRole == false) {
+      return "User";
+    } else {
+      return "Admin";
+    }
+  }
+
 }

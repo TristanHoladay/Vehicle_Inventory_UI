@@ -58,13 +58,6 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }
 
-footer {
-    background-color: blue;
-    width: 50%;
-    height: 4em;
-    margin-top: 1em;
-}
-
 #options-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

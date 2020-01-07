@@ -43,6 +43,7 @@ import { ItemCreationComponent } from './creations/item-creation/item-creation.c
 import { UseticketCreationComponent } from './creations/useticket-creation/useticket-creation.component';
 import { RequestCreationComponent } from './creations/request-creation/request-creation.component';
 import { ResourceTypeComponent } from './functions/resource-type/resource-type.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -68,7 +69,8 @@ export function tokenGetter() {
     ItemCreationComponent,
     UseticketCreationComponent,
     RequestCreationComponent,
-    ResourceTypeComponent
+    ResourceTypeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
