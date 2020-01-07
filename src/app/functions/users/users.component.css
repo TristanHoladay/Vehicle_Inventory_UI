@@ -1,14 +1,37 @@
-#user-container {
+#options-container {
     display: grid;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
 }
 
-#user {
-    width: 30em;
+#create-container {
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+#view-option-container {
+    margin-top: 1em;
+}
+
+#objects-view-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 90%;
+    max-height: 100vh;
+    margin: 0 2em;
+}
+
+.object-container {
     height: auto;
+    width: 40em;
+    border: 1px solid black;
 }
 
-#user > span {
-    margin: 0;
-    display: inline;
+.object-labels {
+    display: block;
+    margin-left: .5em;
+}
+
+.update-modal-container {
+    margin-left: .5em;
 }

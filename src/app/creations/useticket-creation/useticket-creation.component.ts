@@ -83,7 +83,6 @@ export class UseticketCreationComponent implements OnInit {
     form.value.userId = this.token['sub'];
     console.log(form.value)
     this.ticketService.add(form.value).subscribe(data => {
-      console.log(data);
       this.router.navigate(['tickets']);
     });
   }

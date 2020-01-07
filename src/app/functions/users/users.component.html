@@ -26,19 +26,25 @@
     </div>
   </header>
 
-<div>
-  <h1>Create A New User</h1>
-    <creation-modal [creationObject]="addUser"></creation-modal>
+<!-- Body -->
+<div id="options-container">
+  <div id="create-container">
+    <h1>Create A New User</h1>
+      <creation-modal [creationObject]="addUser"></creation-modal>
+  </div>
+  <div id="view-option-container">
+    <h1>View Current Users</h1>
+    <button class="btn btn-lg btn-outline-primary" (click)="showContent()">View</button>
+  </div>
 </div>
 
-<div class="objects-container">
-  <h1>Update Current Users</h1>
+<div id="objects-view-container" *ngIf="show">
 <div *ngFor="let user of Users">
-    <div>
+    <div class="object-container">
         <label class="object-labels"><strong>Name:</strong> {{ user.fullName }} </label>
         <label class="object-labels"><strong>Job Description:</strong> {{ user.jobDescription }} </label>
         <label class="object-labels"><strong>Admin?: </strong> {{ user.adminRole }} </label>
-        <div>
+        <div class="update-modal-container">
             <update-modal [updateObject]="user"></update-modal>
         </div>
     </div>

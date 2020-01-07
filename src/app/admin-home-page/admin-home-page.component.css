@@ -2,6 +2,7 @@
     height: 100vh;
     display: grid;
     justify-content: center;
+    background-color: rgb(255,193,7);
 }
 
 .navigation-card {

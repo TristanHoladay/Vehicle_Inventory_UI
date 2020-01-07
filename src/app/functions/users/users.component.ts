@@ -12,6 +12,8 @@ import { InventoryrequestService } from 'src/app/services/inventoryrequest.servi
 })
 export class UsersComponent implements OnInit {
   Users: IUser[] = [];
+  show: boolean = false;
+  
 
   addUser: IUser = {
     id: "",
@@ -33,7 +35,10 @@ export class UsersComponent implements OnInit {
     this.userService.getAllUsers().subscribe(data => {
       this.Users = data;
     });
+  }
 
+  showContent() {
+    this.show = true;
   }
 
 }
