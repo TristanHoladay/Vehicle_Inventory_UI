@@ -1,24 +1,31 @@
 <app-header></app-header>
-      
-      <div>
-          <h1>Create A New Use Ticket</h1>
+      <div class="options-container">
+        <div class="create-container">
+            <h1>Create A New Use Ticket</h1>
             <button class="btn btn-lg btn-outline-primary" (click)="create()">Create</button>
         </div>
+        <div class="view-option-container">
+            <h1>Update Current Tickets</h1>
+            <button class="btn btn-lg btn-outline-primary" (click)="showContent()">View</button>
+        </div>
+      </div>
+      
         
-        <div class="objects-container">
-          <h1>Update Current Tickets</h1>
+        <div class="objects-view-container" *ngIf="show">
         <div *ngFor="let ticket of tickets">
-            <div>
+            <div class="object-container">
                 <label class="object-labels"><strong>Ticket Number:</strong> {{ ticket.id }} </label>
                 <label class="object-labels"><strong>ConnectWise Ticket:</strong> {{ ticket.tisNumber}} </label>
                 <label class="object-labels"><strong>Date:</strong> {{ ticket.date }} </label>
                 <label class="object-labels"><strong>Notes:</strong> {{ ticket.notes }} </label>
                 <label class="object-labels"><strong>Company:</strong> {{ ticket.company }} </label>
                 <label class="object-labels"><strong>User</strong> {{ ticket.user }} </label>
-                <div>
+                <div class="update-modal-container">
                     <update-modal [updateObject]="ticket"></update-modal>
                 </div>
             </div>
         </div>
+        </div>
         <br>
+<app-footer></app-footer>
 

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class InventoryRequestComponent implements OnInit {
   requests: IRequest[] = [];
+  show: boolean = false;
 
   constructor(
     private reqService: InventoryrequestService,
@@ -25,6 +26,10 @@ export class InventoryRequestComponent implements OnInit {
 
   create() {
     this.router.navigateByUrl("create-request");
+  }
+
+  showContent() {
+    this.show = true;
   }
 
 }

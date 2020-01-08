@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ResourcesComponent implements OnInit {
   items: Iitem[] = [];
+  show: boolean = false;
 
   constructor(
     private itemService: ItemService,
@@ -25,6 +26,10 @@ export class ResourcesComponent implements OnInit {
 
   create(){
     this.router.navigate(['create-item']);
+  }
+
+  showContent() {
+    this.show = true;
   }
   
 

@@ -9,6 +9,7 @@ import { Ivehicles } from 'src/app/interfaces/ivehicles';
 })
 export class VehiclesComponent implements OnInit {
   vehicles: Ivehicles[] = [];
+  show: boolean = false;
   addVehicle: Ivehicles = {
     id: 1,
     name: "",
@@ -30,5 +31,8 @@ export class VehiclesComponent implements OnInit {
   
   }
 
+  showContent() {
+    this.show = true;
+  }
 
 }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class JobTicketsComponent implements OnInit {
   tickets: IjobTicket[] = [];
+  show: boolean = false;
 
 
   constructor(
@@ -26,6 +27,10 @@ export class JobTicketsComponent implements OnInit {
 
 create() {
   this.router.navigateByUrl("create-ticket");
+}
+
+showContent() {
+  this.show = true;
 }
 
 }

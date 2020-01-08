@@ -2,6 +2,8 @@
     box-sizing: border-box;
     width: 100%;
     height: auto;
+    position: absolute;
+    bottom: 0;
     background-color: rgb(18, 46, 77);
     border: 1px solid black;
 }

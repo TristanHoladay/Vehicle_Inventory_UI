@@ -9,6 +9,7 @@ import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 })
 export class ResourceTypeComponent implements OnInit {
   types: IResourceType[] = [];
+  show: boolean = false;
   addType: {
     id: 1,
     name: ""
@@ -22,6 +23,10 @@ export class ResourceTypeComponent implements OnInit {
     this.typeService.getAllResourceTypes().subscribe(data => {
       this.types = data;
     });
+  }
+
+  showContent() {
+    this.show = true;
   }
 
 }

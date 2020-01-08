@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Vehicle-Inventory-UI';
+  title = 'TrackIT';
 
   constructor(
     private authService: AuthService,
