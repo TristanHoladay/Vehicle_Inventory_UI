@@ -17,7 +17,7 @@
             <div class="object-container">
                 <label class="object-labels"><strong>Details:</strong> {{ request.details}} </label>
                 <label class="object-labels"><strong>Resource Type:</strong> {{ request.resourceType }} </label>
-                <label class="object-labels"><strong>Date:</strong> {{ request.date }} </label>
+                <label class="object-labels"><strong>Date:</strong> {{ request.date | date:'short' }} </label>
                 <label class="object-labels"><strong>Company:</strong> {{ request.company }} </label>
                 <label class="object-labels"><strong>User: </strong> {{ request.user }} </label>
                 <label class="object-labels"><strong>Complete:</strong> {{ request.complete }} </label>

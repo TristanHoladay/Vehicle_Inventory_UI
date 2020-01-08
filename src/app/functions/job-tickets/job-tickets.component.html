@@ -16,7 +16,7 @@
             <div class="object-container">
                 <label class="object-labels"><strong>Ticket Number:</strong> {{ ticket.id }} </label>
                 <label class="object-labels"><strong>ConnectWise Ticket:</strong> {{ ticket.tisNumber}} </label>
-                <label class="object-labels"><strong>Date:</strong> {{ ticket.date }} </label>
+                <label class="object-labels"><strong>Date:</strong> {{ ticket.date | date:'short' }} </label>
                 <label class="object-labels"><strong>Notes:</strong> {{ ticket.notes }} </label>
                 <label class="object-labels"><strong>Company:</strong> {{ ticket.company }} </label>
                 <label class="object-labels"><strong>User</strong> {{ ticket.user }} </label>
