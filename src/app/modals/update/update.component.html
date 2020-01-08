@@ -13,9 +13,11 @@
     <div class="modal-body">
       <div class="form-group">
         <form [formGroup]="form">
-            <mat-form-field class="full-width" *ngFor="let prop of objectProps">
-                <input style="margin: 0 .5em" matInput type="text" [placeholder]="prop" [formControlName]="prop">
-                <br>
+            <mat-form-field appearance="legacy" *ngFor="let prop of objectProps">
+                <div class="update-input-container">
+                  <input matInput type="text" [placeholder]="prop" [formControlName]="prop">
+                  <br>
+                </div>
             </mat-form-field>
         </form>
   

@@ -1,11 +1,14 @@
 #footer {
     box-sizing: border-box;
     width: 100%;
-    height: 3em;
+    height: auto;
     background-color: rgb(18, 46, 77);
     border: 1px solid black;
 }
 
 #copyright-tag {
+    color: white;
+    letter-spacing: .2em;
+    margin-left: 2em;
     margin-top: 1em;
 }

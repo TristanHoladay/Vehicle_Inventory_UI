@@ -60,9 +60,9 @@ export class UpdateModal implements OnInit {
 
   update(objectData) {
     var id = objectData.id;
-    console.log(objectData);
+
     this.service.update(id, objectData).subscribe(data => {
-      console.log(data);
+      return data;
     });
   }
 

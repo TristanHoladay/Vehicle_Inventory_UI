@@ -1,45 +1,26 @@
-<header>
-    <div class="row home-nav">
-      <div class="col-5 home-btn">
-        <a routerLink="/admin" routerLinkActive="active"><button class="btn btn-primary">Home</button></a>
-      </div>
-      <div class="col-sm logo">
-        <h1>TrackIT</h1>
-      </div>
-      <div class="logout-btn" class="col-1">
-        <button class="btn btn-warning" (click)="logOut()">Log Out</button>
-      </div>
-    </div>
-    <div class="nav-container">
-      <nav class="row">
-        <ul class="nav-ul">
-          <li class="nav-btn"><a routerLink="/users" routerLinkActive><button class="btn-primary">Users</button></a></li>
-          <li class="nav-btn"><a routerLink="/companies" routerLinkActive><button class="btn-primary">Companies</button></a></li>
-          <li class="nav-btn"><a routerLink="/resources" routerLinkActive><button class="btn-primary">Resources</button></a></li>
-          <li class="nav-btn"><a routerLink="/resourcetype" routerLinkActive><button class="btn-primary">Resourc Types</button></a></li>
-          <li class="nav-btn"><a routerLink="/vehicles" routerLinkActive><button class="btn-primary">Vehicles</button></a></li>
-          <li class="nav-btn"><a routerLink="/tickets" routerLinkActive><button class="btn-primary">Tickets</button></a></li>
-          <li class="nav-btn"><a routerLink="/requests" routerLinkActive><button class="btn-primary">Requests</button></a></li>
-          <li class="nav-btn"><a routerLink="/reports" routerLinkActive><button class="btn-primary">Reports</button></a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-      <div>
+<app-header></app-header>
+      <div id="options-container">
+        <div id="create-container">
           <h1>Create A New Company</h1>
             <creation-modal [creationObject]="addCompany"></creation-modal>
         </div>
-        
-        <div class="objects-container">
+        <div id="view-option-container">
           <h1>Update Current Companies</h1>
+          <button class="btn btn-lg btn-outline-primary" (click)="showContent()">View</button>
+        </div>
+      </div>
+      
+        
+        <div id="objects-view-container" *ngIf="show">
         <div *ngFor="let company of companies">
-            <div>
+            <div class="object-container">
                 <label class="object-labels"><strong>Name:</strong> {{ company.name }} </label>
                 <label class="object-labels"><strong>Status:</strong> {{ company.status }} </label>
-                <div>
+                <div class="update-modal-container">
                     <update-modal [updateObject]="company"></update-modal>
                 </div>
             </div>
         </div>
+        </div>
         <br>
+        <app-footer></app-footer>

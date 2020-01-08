@@ -44,6 +44,7 @@ import { UseticketCreationComponent } from './creations/useticket-creation/useti
 import { RequestCreationComponent } from './creations/request-creation/request-creation.component';
 import { ResourceTypeComponent } from './functions/resource-type/resource-type.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -70,7 +71,8 @@ export function tokenGetter() {
     UseticketCreationComponent,
     RequestCreationComponent,
     ResourceTypeComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,24 @@ export class CreationComponent implements OnInit {
   @Input() creationObject: any;
   closeResult: string;
   form: FormGroup;
-  objectProps: string[];
+  objectProps: string[] = [];
   service: any;
+  nonPrintProps: string[] = [
+    "id", 
+    "companyId",
+    "userId", 
+    "resourceTypeId", 
+    "vehicleId", 
+    "useTicketId", 
+    "ticketT", 
+    "itemT", 
+    "compT",
+    "requestT",
+    "userT",
+    "vehicleT",
+    "resourceTypeT",
+    "uvT"
+  ];
 
   constructor(
     private modalService: NgbModal,
@@ -24,14 +40,20 @@ export class CreationComponent implements OnInit {
   ngOnInit() {
     const formDataObject = Object.keys(this.creationObject).reduce((formObj, prop) => {
       formObj[prop] = new FormControl(this.creationObject[prop])
+
+      //if object property is not in non print array then add to object prop array
+      //which will output form fields to the view
+      if(!this.nonPrintProps.includes(prop)) {
+        this.objectProps.push(prop);
+      }
       return formObj;
     }, {});
 
     this.form = new FormGroup(formDataObject);
 
-    this.objectProps = Object.keys(this.creationObject);
-
+    //use discriminator service to get object type
     this.discService.getObjectType(this.creationObject);
+    //set component service to correct object service, which is determined by discService
     this.service = this.discService.objectService;
   }
 

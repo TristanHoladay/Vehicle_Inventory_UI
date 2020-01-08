@@ -12,6 +12,7 @@ import { IUser } from 'src/app/interfaces/iuser';
 })
 export class CompaniesComponent implements OnInit {
   companies: ICompany[] = [];
+  show: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -31,6 +32,10 @@ export class CompaniesComponent implements OnInit {
       this.companies = data;
     });
   
+  }
+
+  showContent() {
+    this.show = true;
   }
 
 }
