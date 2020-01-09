@@ -51,10 +51,8 @@ export class UpdateModal implements OnInit {
 
     this.form = new FormGroup(formDataObject);
 
-    //use discriminator service to get object type
-    this.discService.getObjectType(this.updateObject);
-    //set component service to correct object service, which is determined by discService
-    this.service = this.discService.objectService;
+    //use discriminator service to get object type and set correct object service
+    this.service = this.discService.getObjectType(this.updateObject);
   }
 
 

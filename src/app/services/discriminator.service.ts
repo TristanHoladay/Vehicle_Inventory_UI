@@ -20,7 +20,6 @@ import { UservehiclesService } from './uservehicles.service';
   providedIn: 'root'
 })
 export class DiscriminatorService {
-  objectService: any;
   formObject: any;
 
   constructor(
@@ -34,45 +33,37 @@ export class DiscriminatorService {
     private uservehiclesService: UservehiclesService
   ) { }
 
-  getObjectType(object: IUser | ICompany | Ivehicles | IRequest | Iitem | IUserVehicles | IjobTicket | IResourceType) {
+  getObjectType(object: IUser | ICompany | Ivehicles | IRequest | Iitem | IUserVehicles | IjobTicket | IResourceType): object {
     if ("userT" in object) {
-      this.objectService = this.userService;
-      this.formObject = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        jobDescription: "",
-        adminRole: null
-      }
+      return this.userService;
     }
 
     if ("compT" in object) {
-      this.objectService = this.companyService;
+      return this.companyService;
     }
 
     if ("vehicleT" in object) {
-      this.objectService = this.vehicleService;
+      return this.vehicleService;
     }
 
     if ("requestT" in object) {
-      this.objectService = this.requestService;
+      return this.requestService;
     }
 
     if ("itemT" in object) {
-      this.objectService = this.itemService;
+      return this.itemService;
     }
 
     if ("uvT" in object) {
-     this.objectService = this.uservehiclesService;
+     return this.uservehiclesService;
     }
 
     if ("ticketT" in object) {
-      this.objectService = this.ticketService;
+      return this.ticketService;
     }
 
     if ("resourceTypeT" in object) {
-       this.objectService = this.typeService;
+       return this.typeService;
     }
   }
 }

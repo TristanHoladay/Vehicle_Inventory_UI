@@ -21,6 +21,10 @@ body {
      padding-bottom: 3em;
  }
 
+ .page-headers {
+    color: rgb(56, 55, 55);
+ }
+
 
 /* Object Component Styling */
 .options-container {
@@ -62,4 +66,9 @@ body {
 
 .update-modal-container {
     margin-left: .5em;
+}
+
+/* Styles for Creation Components */
+.creation-form-container {
+    margin: 2em 1em;
 }

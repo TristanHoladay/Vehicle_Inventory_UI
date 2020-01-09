@@ -1,12 +1,12 @@
 <app-header></app-header>
-  
-  <div id="form" class="form-group">
+  <h1 class="page-headers">Create a Resource</h1>
+
+  <div class="creation-form-container" class="form-group">
     <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
         <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
         <button mat-raised-button color="primary">Submit</button>
     </form>
   </div>
-  
-  
+  <app-footer></app-footer>
 
 

@@ -35,8 +35,7 @@ export class DeleteModal implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.discService.getObjectType(this.delObject);
-    this.service = this.discService.objectService;
+    this.service = this.discService.getObjectType(this.delObject);
   }
 
   deleteObject(delObject: any) {
