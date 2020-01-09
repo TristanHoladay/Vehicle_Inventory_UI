@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 //import { tokenNotExpired } from 'angular2-jwt';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MatAutocompleteModule, MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MaterialModule } from './material.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
@@ -81,11 +81,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatTableModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MaterialModule,
     ReactiveFormsModule,
     FormlyModule.forRoot(),
     FormlyMaterialModule,

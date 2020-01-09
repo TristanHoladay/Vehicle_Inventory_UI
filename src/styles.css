@@ -23,6 +23,7 @@ body {
 
  .page-headers {
     color: rgb(56, 55, 55);
+    text-shadow: 2px 2px white;
  }
 
 
@@ -71,4 +72,19 @@ body {
 /* Styles for Creation Components */
 .creation-form-container {
     margin: 2em 1em;
+    width: 100%;
+    height: auto;
+    display: grid;
+    justify-items: left;
+}
+
+.creation-header {
+    margin: 1em 1em;
+}
+
+.creation-form {
+    margin-left: 3em;
+    width: 40%;
+    background-color: white;
+    padding: 1em 1em;
 }

@@ -8,6 +8,7 @@ import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'item-creation',
@@ -41,7 +42,13 @@ export class ItemCreationComponent implements OnInit {
       key: 'name',
       type: 'input',
       templateOptions: {
-        label: 'Item Name'
+        label: 'Item(s) Name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please give resource(s) a name.'
+        }
       }
     },
     {
@@ -58,6 +65,12 @@ export class ItemCreationComponent implements OnInit {
       templateOptions: {
         label: 'Amount',
         type: 'number',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please specify the number of units for this resource(s).'
+        }
       }
     },
     {
@@ -66,6 +79,12 @@ export class ItemCreationComponent implements OnInit {
       templateOptions: {
         label: 'Cost Per Unit',
         type: 'number',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please add a cost per unit for this resource(s).'
+        }
       }
     },
     {
@@ -74,7 +93,13 @@ export class ItemCreationComponent implements OnInit {
       templateOptions: {
         label: 'Storage Location (i.e Armory, Cage, Vehicle)',
         type: 'string',
+        required: true,
         max: 60
+      },
+      validation: {
+        messages: {
+          required: 'Please give a storage location for the resource.'
+        }
       }
     },
     {
@@ -84,7 +109,13 @@ export class ItemCreationComponent implements OnInit {
         label: 'Company',
         options: this.companyService.getAllCompanies(),
         valueProp: 'id',
-        labelProp: 'name'
+        labelProp: 'name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please select a company to tie this resource to.'
+        }
       }
     },
     {
@@ -94,7 +125,13 @@ export class ItemCreationComponent implements OnInit {
         label: 'Resource Type',
         options: this.rtService.getAllResourceTypes(),
         valueProp: 'id',
-        labelProp: 'name'
+        labelProp: 'name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please select a resource type for this resource(s).'
+        }
       }
     },
     {
@@ -122,10 +159,13 @@ export class ItemCreationComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form) {
-    this.itemService.add(form.value).subscribe(data => {
-      console.log(data);
-      this.router.navigate(['resources']);
-    });
+    if(form.valid) {
+      this.itemService.add(form.value).subscribe(data => {
+        this.router.navigate(['resources']);
+      });
+    } else {
+      alert('Form is missing required values');
+    }
   }
 
 }
