@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { ItemService } from 'src/app/services/item.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { ResourcetypeService } from 'src/app/services/resourcetype.service';
-import { VehicleService } from 'src/app/services/vehicle.service';
 import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
-import { UseticketService } from 'src/app/services/useticket.service';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
 
@@ -43,6 +39,11 @@ token: string;
       templateOptions: {
         label: 'Request Details',
         required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please give a summary of this inventory request.'
+        }
       }
     },
     {
@@ -52,7 +53,13 @@ token: string;
         label: 'Company',
         options: this.companyService.getAllCompanies(),
         valueProp: 'id',
-        labelProp: 'name'
+        labelProp: 'name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please select the company this request is for.'
+        }
       }
     },
     {
@@ -62,7 +69,13 @@ token: string;
         label: 'Resource Type',
         options: this.rtService.getAllResourceTypes(),
         valueProp: 'id',
-        labelProp: 'name'
+        labelProp: 'name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please select the appropriate resource type.'
+        }
       }
     },
   ];
@@ -80,12 +93,16 @@ token: string;
   }
 
   onSubmit(form) {
-    form.value.userId = this.token['sub'];
-    this.requestService.add(form.value).subscribe(data => {
+    if(form.valid) {
+      form.value.userId = this.token['sub'];
+      this.requestService.add(form.value).subscribe(data => {
       console.log(data);
-    });
-
+      });
     this.router.navigate(['requests']);
+    } else {
+      alert('This form is missing required fields.');
+    }
+    
   }
 
 }

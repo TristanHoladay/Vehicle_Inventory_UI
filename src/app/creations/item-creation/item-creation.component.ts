@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ItemService } from 'src/app/services/item.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'item-creation',
@@ -148,7 +146,6 @@ export class ItemCreationComponent implements OnInit {
   
 
   constructor(
-    private modalService: NgbModal,
     private itemService: ItemService,
     private companyService: CompanyService,
     private rtService: ResourcetypeService,
@@ -161,8 +158,9 @@ export class ItemCreationComponent implements OnInit {
   onSubmit(form) {
     if(form.valid) {
       this.itemService.add(form.value).subscribe(data => {
-        this.router.navigate(['resources']);
+        console.log(data);
       });
+      this.router.navigate(['resources']);
     } else {
       alert('Form is missing required values');
     }
