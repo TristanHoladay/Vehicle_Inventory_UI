@@ -50,11 +50,12 @@ token: string;
       key: 'companyId',
       type: 'select',
       templateOptions: {
+        required: true,
         label: 'Company',
         options: this.companyService.getAllCompanies(),
         valueProp: 'id',
         labelProp: 'name',
-        required: true
+        
       },
       validation: {
         messages: {
@@ -66,11 +67,11 @@ token: string;
       key: 'resourceTypeId',
       type: 'select',
       templateOptions: {
+        required: true,
         label: 'Resource Type',
         options: this.rtService.getAllResourceTypes(),
         valueProp: 'id',
         labelProp: 'name',
-        required: true
       },
       validation: {
         messages: {
@@ -100,7 +101,7 @@ token: string;
       });
     this.router.navigate(['requests']);
     } else {
-      alert('This form is missing required fields.');
+      alert('This form is missing required values.');
     }
     
   }

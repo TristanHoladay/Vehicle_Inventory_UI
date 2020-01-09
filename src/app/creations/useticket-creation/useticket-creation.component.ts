@@ -42,6 +42,11 @@ export class UseticketCreationComponent implements OnInit {
         label: 'ConnectWise Ticket #',
         type: 'number',
         required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please specify the ConnectWise ticket this use ticket relates to.'
+        }
       }
     },
     {
@@ -59,7 +64,13 @@ export class UseticketCreationComponent implements OnInit {
         label: 'Company',
         options: this.companyService.getAllCompanies(),
         valueProp: 'id',
-        labelProp: 'name'
+        labelProp: 'name',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: 'Please select company this resource is being used for.'
+        }
       }
     },
   ];
@@ -80,10 +91,15 @@ export class UseticketCreationComponent implements OnInit {
   }
 
   onSubmit(form) {
-    form.value.userId = this.token['sub'];
-    console.log(form.value)
-    this.ticketService.add(form.value).subscribe(data => {
-      this.router.navigate(['tickets']);
+    if(form.valid) {
+      form.value.userId = this.token['sub'];
+      this.ticketService.add(form.value).subscribe(data => {
+      console.log(data);
     });
+    this.router.navigate(['tickets']);
+    } else {
+      alert('This form is missing required values');
+    }
+    
   }
 }
