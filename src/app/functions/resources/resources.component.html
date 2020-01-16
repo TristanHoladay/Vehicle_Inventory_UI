@@ -21,8 +21,8 @@
                 <label class="object-labels"><strong>Storage Location:</strong> {{ item.storageLocation}} </label>
                 <label class="object-labels"><strong>Company:</strong> {{ item.company }} </label>
                 <label class="object-labels"><strong>Resource Type:</strong> {{ item.resourceType}} </label>
-                <label class="object-labels"><strong>Vehicle?:</strong> {{ item.vehicle}} </label>
-                <label class="object-labels"><strong>Ticket?:</strong> {{ item.useTicket }} </label>
+                <label class="object-labels"><strong>Vehicle?:</strong> {{ item.vehicle }} </label>
+                <label class="object-labels"><strong>Ticket?:</strong> {{ ticketNum(item)  }} </label>
                 <div class="update-modal-container">
                     <update-modal [updateObject]="item"></update-modal>
                 </div>

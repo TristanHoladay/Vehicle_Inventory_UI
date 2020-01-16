@@ -31,6 +31,10 @@ export class ResourcesComponent implements OnInit {
   showContent() {
     this.show = true;
   }
+
+  ticketNum(item): any {
+    return item.useTicketId > 0 ? item.useTicketId : "N/A";
+  }
   
 
 }

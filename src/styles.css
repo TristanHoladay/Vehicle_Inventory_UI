@@ -9,7 +9,7 @@ body {
     position: relative;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-image: url('./assets/clouds-sky-background.jpg');
-    background-size: cover;
+    background-position: fixed;
     background-repeat: no-repeat;
  }
 

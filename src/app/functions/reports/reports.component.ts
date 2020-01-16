@@ -20,6 +20,7 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css']
 })
+
 export class ReportsComponent implements OnInit {
 company: boolean = false;
 user: boolean = false;
@@ -37,7 +38,6 @@ companies: ICompany[];
 users: IUser[];
 types: IResourceType[];
 
-  //data source equals the data presented after user decides what data they want
 
   constructor(
     private router: Router,
