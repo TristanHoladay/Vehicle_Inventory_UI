@@ -1,12 +1,52 @@
 <app-header></app-header>
 
 <div id="body-container">
-    <div id="greeting-container" class="card">
+    <div id="ir-notification" *ngIf="showOptions">
+        <h3>Un-completed inventory requests</h3>
+    </div>
+
+    <div id="greeting-container" class="card" *ngIf="showGreeting">
         <div id="greeting">
-            <h1>Let's Get Trackin'</h1>
+           <button (click)="[showGreeting = !showGreeting, showOptions = !showOptions]"><h1>Let's Get Trackin'</h1></button>
         </div> 
     </div>
+
+    <div id="options-container" *ngIf="showOptions">
+        <div id="left-opts-column">
+            <div class="option">
+                <h1>Users</h1>
+            </div>
+            <div class="option">
+                <h1>Inventory Requests</h1>
+            </div>
+            <div class="option">
+                <h1>Use Tickets</h1>
+            </div>
+            <div class="option">
+                <h1>Reporting</h1>
+            </div>
+        </div>
+        <!-- Left Column Options-->
+        
+        <div id="right-opts-column">
+            <div class="option">
+                <h1>Companies</h1>
+            </div>
+            <div class="option">
+                <h1>Resource Types</h1>
+            </div>
+            <div class="option">
+                <h1>Resources</h1>
+            </div>
+            <div class="option">
+                <h1>Vehicles</h1>
+            </div>
+        </div>
+        <!-- Right Column Options-->
+        
+    </div>
 </div>
+
 
 <app-footer></app-footer>
 

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-home-page.component.css']
 })
 export class AdminHomePageComponent implements OnInit {
+showOptions: boolean = false;
+showGreeting: boolean = true;
 
   constructor() { }
 
