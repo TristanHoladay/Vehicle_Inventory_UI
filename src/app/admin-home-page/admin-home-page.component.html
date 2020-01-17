@@ -1,8 +1,13 @@
 <app-header></app-header>
 
 <div id="body-container">
-    <div id="ir-notification" *ngIf="showOptions">
-        <h3>Un-completed inventory requests</h3>
+    <div *ngIf="showOptions" id="notifications-bar">
+        <div class="notifications">
+            <h3>*Vehicle(s) currently in use: {{ vehNum() }}</h3>
+        </div>
+        <div class="notifications">
+            <h3>*Uncompleted Inventory Requests: {{ reqNum() }}</h3>
+        </div>
     </div>
 
     <div id="greeting-container" class="card" *ngIf="showGreeting">
@@ -11,38 +16,39 @@
         </div> 
     </div>
 
+    <!-- Left Column Options-->
     <div id="options-container" *ngIf="showOptions">
         <div id="left-opts-column">
             <div class="option">
-                <h1>Users</h1>
+                <a routerLink="/users" routerLinkActive><h1>Users</h1></a>
             </div>
             <div class="option">
-                <h1>Inventory Requests</h1>
+                <a routerLink="/requests" routerLinkActive><h1>Inventory Requests</h1></a>
             </div>
             <div class="option">
-                <h1>Use Tickets</h1>
+                <a routerLink="/tickets" routerLinkActive><h1>Use Tickets</h1></a>
             </div>
             <div class="option">
-                <h1>Reporting</h1>
+                <a routerLink="/reports" routerLinkActive><h1>Reports</h1></a>
             </div>
         </div>
-        <!-- Left Column Options-->
         
+        <!-- Right Column Options-->
         <div id="right-opts-column">
             <div class="option">
-                <h1>Companies</h1>
+                <a routerLink="/companies" routerLinkActive><h1>Companies</h1></a>
             </div>
             <div class="option">
-                <h1>Resource Types</h1>
+                <a routerLink="/resourcetype" routerLinkActive><h1>Resource Types</h1></a>
             </div>
             <div class="option">
-                <h1>Resources</h1>
+                <a routerLink="/resources" routerLinkActive><h1>Resources</h1></a>
             </div>
             <div class="option">
-                <h1>Vehicles</h1>
+                <a routerLink="/vehicles" routerLinkActive><h1>Vehicles</h1></a>
             </div>
         </div>
-        <!-- Right Column Options-->
+        
         
     </div>
 </div>
