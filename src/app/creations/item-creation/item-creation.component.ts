@@ -5,7 +5,6 @@ import { ItemService } from 'src/app/services/item.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
-import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
 
 @Component({

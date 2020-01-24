@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl,  } from '@angular/forms';
-import { CompanyService } from 'src/app/services/company.service';
+import { FormGroup, FormControl, Validators,  } from '@angular/forms';
 import { DiscriminatorService } from 'src/app/services/discriminator.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'creation-modal',
@@ -12,11 +12,13 @@ import { DiscriminatorService } from 'src/app/services/discriminator.service';
 export class CreationComponent implements OnInit {
   @Input() creationObject: any;
   closeResult: string;
+  modalClose: boolean = false;
   form: FormGroup;
   objectProps: string[] = [];
   service: any;
   nonPrintProps: string[] = [
-    "id", 
+    "id",
+    "fullName", 
     "companyId",
     "userId", 
     "resourceTypeId", 
@@ -34,17 +36,21 @@ export class CreationComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private discService: DiscriminatorService
+    private discService: DiscriminatorService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     const formDataObject = Object.keys(this.creationObject).reduce((formObj, prop) => {
-      formObj[prop] = new FormControl(this.creationObject[prop])
-
-      //if object property is not in non print array then add to object prop array
-      //which will output form fields to the view
+      //if object property is not in non print array then add to object prop array,
+      //which will output form fields to the view; 
+      //also create Form Control that has required validator,
+      //else just make a Form Control, with no required validator, for the object property
       if(!this.nonPrintProps.includes(prop)) {
         this.objectProps.push(prop);
+        formObj[prop] = new FormControl(this.creationObject[prop], Validators.required)
+      } else {
+        formObj[prop] = new FormControl(this.creationObject[prop])
       }
       return formObj;
     }, {});
@@ -56,10 +62,31 @@ export class CreationComponent implements OnInit {
    
   }
 
-  create(objectData){
-    this.service.add(objectData).subscribe(data => {
-      console.log(data);
-    });
+  create(form) {
+    if(form.valid) {
+      this.service.add(form.value).subscribe(data => {
+        alert("Successful Object Creation!");
+      });
+      this.modalClose = true;
+    } else {
+      alert("Form is missing required input. Please fill out all form fields.");
+      return null;
+    }
+    
+  }
+
+  inputTypeVal(prop: string): string {
+    switch(prop) {
+      case "password": {
+        return "password";
+      }
+      case "email": {
+        return "email";
+      }
+      default: {
+        return "text";
+      }
+    }
   }
 
 
