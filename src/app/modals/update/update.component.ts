@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DiscriminatorService } from 'src/app/services/discriminator.service';
 
@@ -13,9 +13,11 @@ export class UpdateModal implements OnInit {
   form: FormGroup;
   objectProps: string[] = [];
   closeResult: string;
+  modalClose: boolean = false;
   service: any;
   nonPrintProps: string[] = [
-    "id", 
+    "id",
+    "fullName",
     "companyId",
     "userId", 
     "resourceTypeId", 
@@ -38,14 +40,16 @@ export class UpdateModal implements OnInit {
 
   ngOnInit() {
     const formDataObject = Object.keys(this.updateObject).reduce((formObj, prop) => {
-      formObj[prop] = new FormControl(this.updateObject[prop])
-
-      //if property is NOT found in the nonPrintProp array then add it to objectProps array
-      //which will be used for outputting certain FormControl values to the view
-      if(!this.nonPrintProps.includes(prop)){
+      //if object property is not in non print array then add to object prop array,
+      //which will output form fields to the view; 
+      //also create Form Control that has required validator,
+      //else just make a Form Control, with no required validator, for the object property
+      if(!this.nonPrintProps.includes(prop)) {
         this.objectProps.push(prop);
+        formObj[prop] = new FormControl(this.updateObject[prop], Validators.required)
+      } else {
+        formObj[prop] = new FormControl(this.updateObject[prop])
       }
-      
       return formObj;
     }, {});
 
@@ -53,15 +57,34 @@ export class UpdateModal implements OnInit {
 
     //use discriminator service to get object type and set correct object service
     this.service = this.discService.getObjectType(this.updateObject);
+   
   }
 
+  update(form) {
+    if(form.valid) {
+      var id = form.value.id;
 
-  update(objectData) {
-    var id = objectData.id;
+      this.service.update(id, form.value).subscribe(data => {
+       alert("Successful Object Update!")
+      });
+      this.modalClose = true;
+    } else {
+      alert("Form is missing required input. Please fill out all form fields.");
+    }
+  }
 
-    this.service.update(id, objectData).subscribe(data => {
-      return data;
-    });
+  inputTypeVal(prop: string): string {
+    switch(prop) {
+      case "password": {
+        return "password";
+      }
+      case "email": {
+        return "email";
+      }
+      default: {
+        return "text";
+      }
+    }
   }
 
   open(content) {

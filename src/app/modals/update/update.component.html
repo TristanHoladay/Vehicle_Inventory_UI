@@ -15,7 +15,7 @@
         <form [formGroup]="form">
             <mat-form-field appearance="legacy" *ngFor="let prop of objectProps">
                 <div class="update-input-container">
-                  <input matInput type="text" [placeholder]="prop" [formControlName]="prop">
+                  <input matInput [type]="inputTypeVal(prop)" [placeholder]="prop" [formControlName]="prop">
                   <br>
                 </div>
             </mat-form-field>
@@ -27,7 +27,7 @@
       <button
         type="submit"
         class="btn btn-danger btn-sm"
-        (click)="[update(form.value) ,modal.close('Save click')]"
+        (click)="[update(form) , modalClose && modal.close('Save click')]"
       >
         Yes Update
       </button>
