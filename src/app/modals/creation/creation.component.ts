@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   templateUrl: './creation.component.html',
   styleUrls: ['./creation.component.css']
 })
+
+
 export class CreationComponent implements OnInit {
   @Input() creationObject: any;
   closeResult: string;

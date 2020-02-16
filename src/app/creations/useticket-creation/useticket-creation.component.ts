@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Router } from '@angular/router';
+import { startWith, switchMap } from 'rxjs/operators';
 
 import { ItemService } from 'src/app/services/item.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
-import { ICompany } from 'src/app/interfaces/icompany';
 import { UseticketService } from 'src/app/services/useticket.service';
 import { AuthService } from 'src/app/services/auth-service.service';
-import { startWith, switchMap } from 'rxjs/operators';
-import { identifierModuleUrl } from '@angular/compiler';
+
 
 @Component({
   selector: 'useticket-creation',
@@ -126,9 +125,11 @@ export class UseticketCreationComponent implements OnInit {
   onSubmit(form) {
 
     if(form.valid) {
+
       this.itemService.getItemById(form.value.itemId).subscribe(item => {
         this.itemService.update(item.id, item);
       });
+
       form.value.userId = this.token['sub'];
       delete form.value.itemId
       
