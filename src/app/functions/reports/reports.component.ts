@@ -14,6 +14,7 @@ import { IUser } from 'src/app/interfaces/iuser';
 import { IResourceType } from 'src/app/interfaces/resource-type';
 import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 import { IDynamicObject } from 'src/app/interfaces/idynamic-object';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-reports',
@@ -32,6 +33,7 @@ objectId: any;
 
 
 dataSource: MatTableDataSource<Object>;
+dataService: any;
 rows: object[];
 columns: string[];
 objectProp: string[];
@@ -77,8 +79,8 @@ nonPrintProps: string[] = [
     // })
   }
 
-  fetchData(object: string) {
-    console.log(object);
+  fetchSource(object: string) {
+    
     if(object == "company") {
       this.getCompanies();
       this.company = true;
@@ -121,58 +123,44 @@ nonPrintProps: string[] = [
 
   
   createDataSource(type: string) {
-    let newDataArr = [];
-    
     if(type == 'tickets' && this.company) {
-      this.companyService.getTicketsbyCompany(this.objectId).subscribe(data => {
-        //foreach loop through data and push only the properties and values you want into a new object?
-        //columns will be based on the properties of the new objects
-        data.forEach(dataObject => {
-          this.removeProps(dataObject)
-          newDataArr.push(dataObject);
-        });
-        this.rows = newDataArr;
-      });
+      this.dataService = this.companyService.getTicketsbyCompany(this.objectId);
     } else {
-      this.userService.getTicketsByUser(this.objectId).subscribe(data => {
-        this.rows = data;
-      });
+      this.dataService = this.userService.getTicketsByUser(this.objectId);
     }
 
     if(type == 'requests' && this.company) {
-      this.companyService.getRequestsByCompany(this.objectId).subscribe(data => {
-        this.rows = data;
-      });
+      this.dataService = this.companyService.getRequestsByCompany(this.objectId);
     } else {
-      this.userService.getRequestsByUser(this.objectId).subscribe(data => {
-        this.rows = data;
-      });
+      this.dataService = this.userService.getRequestsByUser(this.objectId);
     }
 
     if(type == 'items' && this.company) {
-      this.itemService.getAllItems(this.objectId).subscribe(data => {
-        this.rows = data;
-      });
+      this.dataService = this.itemService.getAllItems(this.objectId);
     } else {
-      this.rtService.getItemsByResourceType(this.objectId).subscribe(data => {
-        this.rows = data;
-      });
+      this.dataService = this.rtService.getItemsByResourceType(this.objectId);
     }
 
-      this.dataSource = new MatTableDataSource<Object>(this.rows);
+    if(!this.fetchData()) {
+      this.dataAlert();
+    }
+
+    this.dataSource = new MatTableDataSource<Object>(this.rows);
   }
 
-GenerateColumns() {
-  console.log(this.rows[0]);
-    this.columns = Object.keys(this.rows[0]);
+  fetchData(): boolean  {
+    let objArr = [];
+    this.dataService.subscribe(data => {
+      data.forEach(dataObject => {
+         this.removeProps(dataObject) //remove unwanted properties from displaying
+        objArr.push(dataObject);
+        this.rows = objArr;
+      })
+    });
+    return true;
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  removeProps(dataObject: object): IDynamicObject {
-
+  removeProps(dataObject: object): Object {
     for (var key in dataObject) {
       if (dataObject.hasOwnProperty(key)) {
         for (var i = 0; i < this.nonPrintProps.length; i++) {
@@ -184,5 +172,28 @@ GenerateColumns() {
     }
     return dataObject;
   } 
+
+  dataAlert() {
+    alert("Could not process request for data.");
+  }
+
+GenerateColumns() {
+  console.log(this.rows[0]);
+    this.columns = Object.keys(this.rows[0]);
+  }
+
+  clearDataTableandView() {
+    this.company = false;
+    this.user = false;
+    this.resourceType = false;
+    this.selectedId = false;
+    this.rows.length = 0;
+    this.columns.length = 0;
+    this.dataSource = new MatTableDataSource<Object>(this.rows);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 

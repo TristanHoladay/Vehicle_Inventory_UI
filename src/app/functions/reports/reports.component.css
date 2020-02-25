@@ -7,3 +7,8 @@
     box-sizing: border-box;
     margin: 2em 2em;
 }
+
+#clearButton {
+    margin-left: 1em;
+    padding: 0 1em;
+}

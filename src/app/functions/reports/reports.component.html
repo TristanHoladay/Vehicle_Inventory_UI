@@ -11,9 +11,9 @@
                     <h4>Select Category</h4>
                     <button class="btn btn-outline-primary" ngbDropdownToggle>Category</button>
                     <div ngbDropdownMenu>
-                        <button ngbDropdownItem (click)="fetchData('company')">Companies</button>
-                        <button ngbDropdownItem (click)="fetchData('user')">Users</button>
-                        <button ngbDropdownItem (click)="fetchData('resourcetype')">Resource Types</button>
+                        <button ngbDropdownItem (click)="fetchSource('company')">Companies</button>
+                        <button ngbDropdownItem (click)="fetchSource('user')">Users</button>
+                        <button ngbDropdownItem (click)="fetchSource('resourcetype')">Resource Types</button>
                     </div>
                   </div>
                 </div>
@@ -83,6 +83,7 @@
             </div>
 
             <button class="btn btn-primary" (click)="GenerateColumns()">Generate</button>
+            <button id="clearButton" class="btn btn-primary" (click)="clearDataTableandView()">Clear</button>
 </div>
 
 
