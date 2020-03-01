@@ -156,22 +156,25 @@ nonPrintProps: string[] = [
        alert("Cannot set data service.");
     }
 
-    if(!this.fetchData()) {
-      this.dataAlert();
-    }
-
+    this.fetchData();
   }
 
-  fetchData(): boolean  {
+  fetchData()  {
     let objArr = [];
     this.dataService.subscribe(data => {
-      data.forEach(dataObject => {
-         this.removeProps(dataObject) //remove unwanted properties from displaying
-        objArr.push(dataObject);
-        this.rows = objArr;
-      })
+
+      if(data.length == 0) {
+        alert("No data exists for selected options.");
+        this.clearDataTableandView();
+      } else {
+        data.forEach(dataObject => {
+          this.removeProps(dataObject) //remove unwanted properties from displaying
+         objArr.push(dataObject);
+       });
+      }
     });
-    return true;
+
+    this.rows = objArr;
   }
 
   removeProps(dataObject: object): Object {
@@ -186,10 +189,6 @@ nonPrintProps: string[] = [
     }
     return dataObject;
   } 
-
-  dataAlert() {
-    alert("Could not process request for data.");
-  }
 
   GenerateColumns() {
     this.columns = Object.keys(this.rows[0]);
@@ -207,7 +206,7 @@ nonPrintProps: string[] = [
     this.selectedId = false;
     this.rows.length = 0;
     this.columns.length = 0;
-    this.dataSource = new MatTableDataSource<Object>(this.rows);
+    this.createDataSource();
   }
 
   applyFilter(filterValue: string) {
