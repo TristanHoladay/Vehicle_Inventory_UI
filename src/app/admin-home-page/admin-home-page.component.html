@@ -1,6 +1,11 @@
 <app-header></app-header>
 
 <div id="body-container">
+
+    <div id="qs-heading" *ngIf="showOptions">
+        <h1>Quick Stats</h1>
+    </div>
+    
     <div *ngIf="showOptions" id="notifications-bar">
         <div class="notifications">
             <h3>*Vehicle(s) currently in use: {{ vehNum() }}</h3>
@@ -15,6 +20,7 @@
            <button (click)="[showGreeting = !showGreeting, showOptions = !showOptions]"><h1>Let's Get Trackin'</h1></button>
         </div> 
     </div>
+
 
     <!-- Left Column Options-->
     <div id="options-container" *ngIf="showOptions">
