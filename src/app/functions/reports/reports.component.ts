@@ -79,6 +79,7 @@ nonPrintProps: string[] = [
     // })
   }
 
+  //Get list of selected data sources
   fetchSource(object: string) {
     
     if(object == "company") {
@@ -95,11 +96,6 @@ nonPrintProps: string[] = [
       this.getTypes();
       this.resourceType = true;
     }
-  }
-
-  catchId(id: any) {
-    this.objectId = id;
-    this.selectedId = true;
   }
 
   getCompanies() {
@@ -121,31 +117,49 @@ nonPrintProps: string[] = [
     })
   }
 
+  //Get id of dataSource object to later pass to observable
+  catchId(id: any) {
+    this.objectId = id;
+    this.selectedId = true;
+  }
   
-  createDataSource(type: string) {
-    if(type == 'tickets' && this.company) {
-      this.dataService = this.companyService.getTicketsbyCompany(this.objectId);
-    } else {
-      this.dataService = this.userService.getTicketsByUser(this.objectId);
-    }
+  //Get Service that matches selected parameters
+  defineDataService(type: string) {
+    switch(type) {
 
-    if(type == 'requests' && this.company) {
-      this.dataService = this.companyService.getRequestsByCompany(this.objectId);
-    } else {
-      this.dataService = this.userService.getRequestsByUser(this.objectId);
-    }
+      case("tickets") :
+        if(this.company) {
+          this.dataService = this.companyService.getTicketsbyCompany(this.objectId);
+          console.log(this.dataService.toString());
+        } else {
+          this.dataService = this.userService.getTicketsByUser(this.objectId);
+        }
+        break;
+      
+      case("requests") :
+        if(this.company) {
+          this.dataService = this.companyService.getRequestsByCompany(this.objectId);
+        } else {
+          this.dataService = this.userService.getRequestsByUser(this.objectId);
+        }
+        break;
 
-    if(type == 'items' && this.company) {
-      this.dataService = this.itemService.getAllItems(this.objectId);
-    } else {
-      this.dataService = this.rtService.getItemsByResourceType(this.objectId);
+      case("items") :
+        if(this.company) {
+          this.dataService = this.itemService.getAllItems(this.objectId);
+        } else {
+          this.dataService = this.itemService.getAllItems(this.objectId);
+        }
+        break;
+      
+      default: 
+       alert("Cannot set data service.");
     }
 
     if(!this.fetchData()) {
       this.dataAlert();
     }
 
-    this.dataSource = new MatTableDataSource<Object>(this.rows);
   }
 
   fetchData(): boolean  {
@@ -177,9 +191,13 @@ nonPrintProps: string[] = [
     alert("Could not process request for data.");
   }
 
-GenerateColumns() {
-  console.log(this.rows[0]);
+  GenerateColumns() {
     this.columns = Object.keys(this.rows[0]);
+    this.createDataSource();
+  }
+
+  createDataSource() {
+    this.dataSource = new MatTableDataSource<Object>(this.rows);
   }
 
   clearDataTableandView() {
