@@ -25,40 +25,41 @@ import { Observable, Subject } from 'rxjs';
 
 
 export class ReportsComponent implements OnInit {
-company: boolean = false;
-user: boolean = false;
-resourceType: boolean = false;
-selectedId: boolean = false;
-objectId: any;
+
+  company: boolean = false;
+  user: boolean = false;
+  resourceType: boolean = false;
+  selectedId: boolean = false;
+  objectId: any;
 
 
-dataSource: MatTableDataSource<Object>;
-dataService: any;
-rows: object[];
-columns: string[];
-objectProp: string[];
-myControl = new FormControl();
+  dataSource: MatTableDataSource<Object>;
+  dataService: any;
+  rows: object[];
+  columns: string[];
+  objectProp: string[];
+  myControl = new FormControl();
 
-companies: ICompany[];
-users: IUser[];
-types: IResourceType[];
+  companies: ICompany[];
+  users: IUser[];
+  types: IResourceType[];
 
-nonPrintProps: string[] = [
-  "fullName", 
-  "companyId",
-  "userId", 
-  "resourceTypeId", 
-  "vehicleId", 
-  "useTicketId", 
-  "ticketT", 
-  "itemT", 
-  "compT",
-  "requestT",
-  "userT",
-  "vehicleT",
-  "resourceTypeT",
-  "uvT"
-];
+  nonPrintProps: string[] = [
+    "fullName", 
+    "companyId",
+    "userId", 
+    "resourceTypeId", 
+    "vehicleId", 
+    "useTicketId", 
+    "ticketT", 
+    "itemT", 
+    "compT",
+    "requestT",
+    "userT",
+    "vehicleT",
+    "resourceTypeT",
+    "uvT"
+  ];
 
 
   constructor(
@@ -84,17 +85,36 @@ nonPrintProps: string[] = [
     
     if(object == "company") {
       this.getCompanies();
-      this.company = true;
+      this.setViewTrue(object);
     }
 
     if(object == "user") {
       this.getUsers();
-      this.user = true;
+      this.setViewTrue(object);
     }
 
     if(object == "resourcetype") {
       this.getTypes();
-      this.resourceType = true;
+      this.setViewTrue(object);
+    }
+  }
+
+  setViewTrue(source: string) {
+    switch(source) {
+      case("company") :
+        this.company = true;
+        this.user = false;
+        this.resourceType = false;
+        break;
+      case("user") :
+        this.user = true;
+        this.company = false;
+        this.resourceType = false;
+        break;
+      case("resourcetype") :
+        this.resourceType = true;
+        this.company = false;
+        this.user = false;
     }
   }
 
@@ -130,7 +150,6 @@ nonPrintProps: string[] = [
       case("tickets") :
         if(this.company) {
           this.dataService = this.companyService.getTicketsbyCompany(this.objectId);
-          console.log(this.dataService.toString());
         } else {
           this.dataService = this.userService.getTicketsByUser(this.objectId);
         }
@@ -154,6 +173,8 @@ nonPrintProps: string[] = [
       
       default: 
        alert("Cannot set data service.");
+       this.clearDataTableandView();
+       break;
     }
 
     this.fetchData();

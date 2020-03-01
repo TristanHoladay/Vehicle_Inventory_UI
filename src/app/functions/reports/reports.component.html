@@ -46,7 +46,7 @@
             <div *ngIf="resourceType" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
-                        <h4>Select Resource Type</h4>
+                        <h4>Select Resource Type and Press Generate</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Resource Type</button>
                         <div ngbDropdownMenu>
                             <button *ngFor="let type of types" ngbDropdownItem (click)="[catchId(type.id), defineDataService('items')]">{{type.name}}</button>
