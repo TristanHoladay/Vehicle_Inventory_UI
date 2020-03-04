@@ -115,6 +115,12 @@ export class ReportsComponent implements OnInit {
         this.resourceType = true;
         this.company = false;
         this.user = false;
+        break;
+      default :
+        this.company = false;
+        this.user = false;
+        this.resourceType = false;
+        break;
     }
   }
 
@@ -127,7 +133,6 @@ export class ReportsComponent implements OnInit {
   getUsers() {
     this.userService.getAllUsers().subscribe(data => {
       this.users = data;
-      console.log(data);
     });
   }
 
@@ -165,7 +170,7 @@ export class ReportsComponent implements OnInit {
 
       case("items") :
         if(this.company) {
-          this.dataService = this.itemService.getAllItems(this.objectId);
+          this.dataService = this.itemService.getItemById(this.objectId);
         } else {
           this.dataService = this.itemService.getAllItems(this.objectId);
         }
