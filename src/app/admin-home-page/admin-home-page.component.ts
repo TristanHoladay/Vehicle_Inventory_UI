@@ -4,6 +4,8 @@ import { VehicleService } from '../services/vehicle.service';
 import { InventoryrequestService } from '../services/inventoryrequest.service';
 import { Ivehicles } from '../interfaces/ivehicles';
 import { IRequest } from '../interfaces/irequest';
+import { UserService } from '../services/user.service';
+import { IUser } from '../interfaces/iuser';
 
 @Component({
   selector: 'app-admin-home-page',
@@ -16,10 +18,12 @@ showGreeting: boolean = true;
 
 vehicles: Ivehicles[] = [];
 requests: IRequest[] = [];
+users: IUser[] = [];
 
   constructor(
     private vehService: VehicleService,
-    private reqService: InventoryrequestService
+    private reqService: InventoryrequestService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -29,6 +33,10 @@ requests: IRequest[] = [];
 
     this.reqService.getAllRequests().subscribe(data => {
       this.requests = data;
+    });
+
+    this.userService.getAllUsers().subscribe(data => {
+      this.users = data;
     });
   }
 

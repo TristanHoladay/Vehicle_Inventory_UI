@@ -31,6 +31,9 @@ export class ReportsComponent implements OnInit {
   resourceType: boolean = false;
   selectedId: boolean = false;
   objectId: any;
+  disList: string;
+  disObject: string;
+  disDT: string;
 
 
   dataSource: MatTableDataSource<Object>;
@@ -83,6 +86,8 @@ export class ReportsComponent implements OnInit {
   //Get list of selected data sources
   fetchSource(object: string) {
     
+    this.disList = object;
+
     if(object == "company") {
       this.getCompanies();
       this.setViewTrue(object);
@@ -143,13 +148,16 @@ export class ReportsComponent implements OnInit {
   }
 
   //Get id of dataSource object to later pass to observable
-  catchId(id: any) {
+  catchIdAndName(id: any, name: string) {
     this.objectId = id;
     this.selectedId = true;
+    this.disObject = name;
   }
   
   //Get Service that matches selected parameters
   defineDataService(type: string) {
+    this.disDT = type;
+
     switch(type) {
 
       case("tickets") :
@@ -170,9 +178,11 @@ export class ReportsComponent implements OnInit {
 
       case("items") :
         if(this.company) {
-          this.dataService = this.itemService.getItemById(this.objectId);
-        } else {
           this.dataService = this.itemService.getAllItems(this.objectId);
+          console.log("true");
+        } else {
+          this.dataService = this.itemService.getItemById(this.objectId);
+          console.log("this");
         }
         break;
       

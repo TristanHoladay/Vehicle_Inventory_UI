@@ -2,6 +2,7 @@
 
   <div id="reportingHeader">
     <h1>Run Reporting</h1>
+    <h4>*Select desired data options and press "Generate"</h4>
   </div>
   
 <div id="selectors-container" class="row">
@@ -17,6 +18,9 @@
                     </div>
                   </div>
                 </div>
+                <div *ngIf="disList" class="selectedDataDisplay">
+                  <h3>{{ disList }}</h3>
+                </div>
             </div>
         
             <div *ngIf="company" class="col-sm">
@@ -25,9 +29,12 @@
                         <h4>Select Company</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Company</button>
                         <div ngbDropdownMenu>
-                            <button *ngFor="let company of companies" ngbDropdownItem (click)="catchId(company.id)">{{company.name}}</button>
+                            <button *ngFor="let company of companies" ngbDropdownItem (click)="catchIdAndName(company.id, company.name)">{{company.name}}</button>
                         </div>
                       </div>
+                    </div>
+                    <div *ngIf="disObject" class="selectedDataDisplay">
+                      <h3>{{ disObject }}</h3>
                     </div>
             </div>
 
@@ -37,21 +44,27 @@
                         <h4>Select User</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Users</button>
                         <div ngbDropdownMenu>
-                            <button *ngFor="let user of users" ngbDropdownItem (click)="catchId(user.id)">{{user.fullName}}</button>
+                            <button *ngFor="let user of users" ngbDropdownItem (click)="catchIdAndName(user.id, user.fullName)">{{user.fullName}}</button>
                         </div>
                       </div>
+                    </div>
+                    <div *ngIf="disObject" class="selectedDataDisplay">
+                      <h3>{{ disObject }}</h3>
                     </div>
             </div>
 
             <div *ngIf="resourceType" class="col-sm">
                     <div>
                       <div ngbDropdown class="d-inline-block">
-                        <h4>Select Resource Type and Press Generate</h4>
+                        <h4>Select Resource Type</h4>
                         <button class="btn btn-outline-primary" ngbDropdownToggle>Resource Type</button>
                         <div ngbDropdownMenu>
-                            <button *ngFor="let type of types" ngbDropdownItem (click)="[catchId(type.id), defineDataService('items')]">{{type.name}}</button>
+                            <button *ngFor="let type of types" ngbDropdownItem (click)="[catchIdAndName(type.id, type.name), defineDataService('items')]">{{type.name}}</button>
                         </div>
                       </div>
+                    </div>
+                    <div *ngIf="disObject" class="selectedDataDisplay">
+                      <h3>{{ disObject }}</h3>
                     </div>
             </div>
 
@@ -67,6 +80,9 @@
                         </div>
                       </div>
                     </div>
+                    <div *ngIf="disDT" class="selectedDataDisplay">
+                      <h3>{{ disDT }}</h3>
+                    </div>
             </div>
 
             <div *ngIf="selectedId && user" class="col-sm">
@@ -80,9 +96,12 @@
                         </div>
                       </div>
                     </div>
+                    <div *ngIf="disDT" class="selectedDataDisplay">
+                      <h3>{{ disDT }}</h3>
+                    </div>
             </div>
 
-            <button class="btn btn-primary" (click)="GenerateColumns()">Generate</button>
+            <button id="genButton" class="btn btn-primary" (click)="GenerateColumns()">Generate</button>
             <button id="clearButton" class="btn btn-primary" (click)="clearDataTableandView()">Clear</button>
 </div>
 

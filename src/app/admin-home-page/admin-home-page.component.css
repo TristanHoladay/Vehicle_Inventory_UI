@@ -77,12 +77,34 @@
 
 .option {
     display: grid;
-    justify-content: center;
+    grid-template-columns: 60% 40%;
+    justify-items: center;
     align-items: center;
     margin-bottom: 2em;
     width: 90%;
     height: 10em;
     border-radius: 10%;
-    background-color: rgba(7, 218, 255, 0.377);
+    background-color: rgb(18,46,77);
+}
+
+.option > a > h1 {
+    display: inline;
+}
+
+a {
+    grid-column: 1/2;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.listNumbers {
+    margin-right: 2em;
+    color: white;
+    font-size: 5em;
+    background-color: gold;
+    border-radius: 50%;
+    width: 1.3em;
+    height: 1.3em;
+    align-content: center;
 }
 

@@ -27,6 +27,11 @@ export class ItemService {
     );
   }
 
+  getItemByRT(id: number): Observable<Iitem[]> {
+    return this.http.get<Iitem[]>(
+      `${this.url}/resourcetype/${id}/items`
+    );
+  }
 
   add(item: Iitem): Observable<Iitem> {
     return this.http.post<Iitem>(
