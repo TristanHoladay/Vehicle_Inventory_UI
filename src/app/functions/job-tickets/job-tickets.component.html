@@ -21,7 +21,7 @@
                 <label class="object-labels"><strong>Company:</strong> {{ ticket.company }} </label>
                 <label class="object-labels"><strong>User</strong> {{ ticket.user }} </label>
                 <div class="update-modal-container">
-                    <update-modal [updateObject]="ticket"></update-modal>
+                    <update-modal [updateObject]="ticket" (updated)="updtData($event)"></update-modal>
                 </div>
             </div>
         </div>

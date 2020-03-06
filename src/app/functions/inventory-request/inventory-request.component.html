@@ -22,7 +22,7 @@
                 <label class="object-labels"><strong>User: </strong> {{ request.user }} </label>
                 <label class="object-labels"><strong>Complete:</strong> {{ request.complete }} </label>
                 <div class="update-modal-container">
-                    <update-modal [updateObject]="request"></update-modal>
+                    <update-modal [updateObject]="request" (updated)="updtData($event)"></update-modal>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                 <label class="object-labels"><strong>Vehicle?:</strong> {{ item.vehicle }} </label>
                 <label class="object-labels"><strong>Ticket?:</strong> {{ ticketNum(item)  }} </label>
                 <div class="update-modal-container">
-                    <update-modal [updateObject]="item"></update-modal>
+                    <update-modal [updateObject]="item" (updated)="updtData($event)"></update-modal>
                 </div>
             </div>
         </div>

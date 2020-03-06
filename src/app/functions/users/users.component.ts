@@ -37,18 +37,26 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  //Update object list to force onChangeDetection
   addData(newData) {
     this.Users.push(newData);
   }
 
+  //Update objecct and the view after update modal successfully executed
   updtData(updatedData) {
-   let upData = this.Users.find(ud => ud.id == updatedData.id) 
-     upData.firstName = updatedData.firstName;
-     upData.lastName = updatedData.lastName;
-     upData.fullName = updatedData.fullName;
-     upData.jobDescription = updatedData.jobDescription;
-     upData.adminRole = updatedData.adminRole;
-     upData.email = updatedData.email;
+   let oldData = this.Users.find(ud => ud.id == updatedData.id) 
+
+   for (var okey in oldData ) {
+     if(oldData.hasOwnProperty(okey)) {
+        for(var nkey in updatedData) {
+          if(updatedData.hasOwnProperty(nkey)) {
+            if(okey == nkey) {
+              oldData[okey] = updatedData[nkey];
+            }
+          }
+        }
+     }
+   }
   }
 
   showContent() {

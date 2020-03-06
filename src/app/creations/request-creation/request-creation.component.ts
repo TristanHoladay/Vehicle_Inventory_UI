@@ -7,6 +7,7 @@ import { ICompany } from 'src/app/interfaces/icompany';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { InventoryrequestService } from 'src/app/services/inventoryrequest.service';
+import { DataService } from 'src/app/services/dataservice.service';
 
 @Component({
   selector: 'request-creation',
@@ -17,6 +18,7 @@ export class RequestCreationComponent implements OnInit {
 form = new FormGroup({});
 options: FormlyFormOptions = {};
 token: string;
+dataSubject: any = {};
 
   model = {
     id: 1,
@@ -87,6 +89,7 @@ token: string;
     private requestService: InventoryrequestService,
     private companyService: CompanyService,
     private rtService: ResourcetypeService,
+    private dService: DataService
   ) { }
 
   ngOnInit() {
@@ -97,7 +100,8 @@ token: string;
     if(form.valid) {
       form.value.userId = this.token['sub'];
       this.requestService.add(form.value).subscribe(data => {
-      console.log(data);
+        this.dService.changeDataSub(data);
+        alert("Successfully created new request!");
       });
     this.router.navigate(['requests']);
     } else {

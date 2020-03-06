@@ -28,7 +28,28 @@ export class VehiclesComponent implements OnInit {
     this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data;
     });
-  
+  }
+
+   //Update object list to force onChangeDetection
+   addData(newData) {
+    this.vehicles.push(newData);
+  }
+
+  //Update objecct and the view after update modal successfully executed
+  updtData(updatedData) {
+   let oldData = this.vehicles.find(ud => ud.id == updatedData.id) 
+
+   for (var okey in oldData ) {
+     if(oldData.hasOwnProperty(okey)) {
+        for(var nkey in updatedData) {
+          if(updatedData.hasOwnProperty(nkey)) {
+            if(okey == nkey) {
+              oldData[okey] = updatedData[nkey];
+            }
+          }
+        }
+     }
+   }
   }
 
   showContent() {

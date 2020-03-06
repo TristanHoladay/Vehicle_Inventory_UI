@@ -6,6 +6,7 @@ import { CompanyService } from 'src/app/services/company.service';
 import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/dataservice.service';
 
 @Component({
   selector: 'item-creation',
@@ -149,7 +150,8 @@ export class ItemCreationComponent implements OnInit {
     private companyService: CompanyService,
     private rtService: ResourcetypeService,
     private vehicleService: VehicleService,
-    private router: Router
+    private router: Router,
+    private dService: DataService
   ) { }
 
   ngOnInit() {}
@@ -157,7 +159,8 @@ export class ItemCreationComponent implements OnInit {
   onSubmit(form) {
     if(form.valid) {
       this.itemService.add(form.value).subscribe(data => {
-        console.log(data);
+        this.dService.changeDataSub(data);
+        alert("Successfully created new item!");
       });
       this.router.navigate(['resources']);
     } else {

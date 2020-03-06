@@ -25,6 +25,28 @@ export class ResourceTypeComponent implements OnInit {
     });
   }
 
+   //Update object list to force onChangeDetection
+   addData(newData) {
+    this.types.push(newData);
+  }
+
+  //Update objecct and the view after update modal successfully executed
+  updtData(updatedData) {
+   let oldData = this.types.find(ud => ud.id == updatedData.id) 
+
+   for (var okey in oldData ) {
+     if(oldData.hasOwnProperty(okey)) {
+        for(var nkey in updatedData) {
+          if(updatedData.hasOwnProperty(nkey)) {
+            if(okey == nkey) {
+              oldData[okey] = updatedData[nkey];
+            }
+          }
+        }
+     }
+   }
+  }
+
   showContent() {
     this.show = true;
   }

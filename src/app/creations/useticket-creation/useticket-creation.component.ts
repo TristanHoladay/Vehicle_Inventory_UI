@@ -10,6 +10,7 @@ import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { UseticketService } from 'src/app/services/useticket.service';
 import { AuthService } from 'src/app/services/auth-service.service';
+import { DataService } from 'src/app/services/dataservice.service';
 
 
 @Component({
@@ -115,7 +116,8 @@ export class UseticketCreationComponent implements OnInit {
     private companyService: CompanyService,
     private rtService: ResourcetypeService,
     private vehicleService: VehicleService,
-    private router: Router
+    private router: Router,
+    private dService: DataService
   ) { }
 
   ngOnInit() {
@@ -126,6 +128,7 @@ export class UseticketCreationComponent implements OnInit {
 
     if(form.valid) {
 
+      //Update the selected item being used for ticket
       this.itemService.getItemById(form.value.itemId).subscribe(item => {
         this.itemService.update(item.id, item);
       });
@@ -134,7 +137,8 @@ export class UseticketCreationComponent implements OnInit {
       delete form.value.itemId
       
       this.ticketService.add(form.value).subscribe(data => {
-        console.log(data);
+        this.dService.changeDataSub(data);
+        alert("Successfully created new ticket!");
       });
       this.router.navigate(['tickets']);
     } else {

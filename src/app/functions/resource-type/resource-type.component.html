@@ -2,7 +2,7 @@
     <div class="options-container">
         <div class="create-container">
             <h1>Create A New Resource Type</h1>
-            <creation-modal [creationObject]="addType"></creation-modal>
+            <creation-modal [creationObject]="addType" (addedData)="addData($event)"></creation-modal>
         </div>
         <div class="view-option-container">
             <h1>Update Current Resource Types</h1>
@@ -17,7 +17,7 @@
                 <label class="object-labels"><strong>Id:</strong> {{ type.id }} </label>
                 <label class="object-labels"><strong>Name:</strong> {{ type.name }} </label>
                 <div class="update-modal-container">
-                    <update-modal [updateObject]="type"></update-modal>
+                    <update-modal [updateObject]="type" (updated)="updtData($event)"></update-modal>
                 </div>
             </div>
         </div>
