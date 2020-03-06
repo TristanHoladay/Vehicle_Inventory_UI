@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DiscriminatorService } from 'src/app/services/discriminator.service';
@@ -9,7 +9,10 @@ import { DiscriminatorService } from 'src/app/services/discriminator.service';
   styleUrls: ['./update.component.css']
 })
 export class UpdateModal implements OnInit {
+
   @Input() updateObject: any;
+  @Output() updated = new EventEmitter();
+
   form: FormGroup;
   objectProps: string[] = [];
   closeResult: string;
@@ -66,6 +69,7 @@ export class UpdateModal implements OnInit {
 
       this.service.update(id, form.value).subscribe(data => {
        alert("Successful Object Update!")
+       this.updated.emit(data);
       });
       this.modalClose = true;
     } else {

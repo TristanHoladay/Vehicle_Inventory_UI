@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import {Component, ViewChild, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource, MatSort, MatInputModule } from '@angular/material';
 import { IUser } from 'src/app/interfaces/iuser';
@@ -8,7 +8,7 @@ import { InventoryrequestService } from 'src/app/services/inventoryrequest.servi
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
   Users: IUser[] = [];
@@ -28,13 +28,27 @@ export class UsersComponent implements OnInit {
   }
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(data => {
       this.Users = data;
     });
+  }
+
+  addData(newData) {
+    this.Users.push(newData);
+  }
+
+  updtData(updatedData) {
+   let upData = this.Users.find(ud => ud.id == updatedData.id) 
+     upData.firstName = updatedData.firstName;
+     upData.lastName = updatedData.lastName;
+     upData.fullName = updatedData.fullName;
+     upData.jobDescription = updatedData.jobDescription;
+     upData.adminRole = updatedData.adminRole;
+     upData.email = updatedData.email;
   }
 
   showContent() {

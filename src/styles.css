@@ -50,14 +50,17 @@ body {
     width: 90%;
     height: auto;
     margin: 1em 2em;
-    color: black;
-    text-shadow: 1px 1px white;
+    color: white;
+    text-shadow: 1px 1px black;
+    letter-spacing: 1px;
 }
 
 .object-container {
     height: auto;
     width: 40em;
     border: 1px solid white;
+    background-color: rgb(18,46,77);
+    padding: 1em 1em;
 }
 
 .object-labels {

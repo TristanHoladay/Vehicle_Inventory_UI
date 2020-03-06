@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators,  } from '@angular/forms';
 import { DiscriminatorService } from 'src/app/services/discriminator.service';
@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 
 
 export class CreationComponent implements OnInit {
+
   @Input() creationObject: any;
+  @Output() addedData = new EventEmitter();
+
   closeResult: string;
   modalClose: boolean = false;
   form: FormGroup;
@@ -68,12 +71,15 @@ export class CreationComponent implements OnInit {
     if(form.valid) {
       this.service.add(form.value).subscribe(data => {
         alert("Successful Object Creation!");
+        this.addedData.emit(data);
       });
       this.modalClose = true;
     } else {
       alert("Form is missing required input. Please fill out all form fields.");
       return null;
     }
+
+    //this.addedData.emit()
     
   }
 
