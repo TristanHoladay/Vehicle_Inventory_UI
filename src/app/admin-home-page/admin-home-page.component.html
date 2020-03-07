@@ -31,9 +31,11 @@
             </div>
             <div class="option">
                 <a routerLink="/requests" routerLinkActive><h1>Inventory Requests</h1></a>
+                <span class="listNumbers reqNum">{{ requests.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/tickets" routerLinkActive><h1>Use Tickets</h1></a>
+                <span class="listNumbers">{{ users.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/reports" routerLinkActive><h1>Reports</h1></a>
@@ -44,15 +46,19 @@
         <div id="right-opts-column">
             <div class="option">
                 <a routerLink="/companies" routerLinkActive><h1>Companies</h1></a>
+                <span class="listNumbers">{{ users.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/resourcetype" routerLinkActive><h1>Resource Types</h1></a>
+                <span class="listNumbers">{{ users.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/resources" routerLinkActive><h1>Resources</h1></a>
+                <span class="listNumbers">{{ users.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/vehicles" routerLinkActive><h1>Vehicles</h1></a>
+                <span class="listNumbers">{{ vehicles.length }}</span>
             </div>
         </div>
         

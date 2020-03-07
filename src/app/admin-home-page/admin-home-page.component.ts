@@ -6,6 +6,14 @@ import { Ivehicles } from '../interfaces/ivehicles';
 import { IRequest } from '../interfaces/irequest';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/iuser';
+import { CompanyService } from '../services/company.service';
+import { UseticketService } from '../services/useticket.service';
+import { ItemService } from '../services/item.service';
+import { ResourcetypeService } from '../services/resourcetype.service';
+import { ICompany } from '../interfaces/icompany';
+import { IjobTicket } from '../interfaces/ijob-ticket';
+import { IResourceType } from '../interfaces/resource-type';
+import { Iitem } from '../interfaces/iitem';
 
 @Component({
   selector: 'app-admin-home-page',
@@ -16,14 +24,22 @@ export class AdminHomePageComponent implements OnInit {
 showOptions: boolean = false;
 showGreeting: boolean = true;
 
-vehicles: Ivehicles[] = [];
-requests: IRequest[] = [];
-users: IUser[] = [];
+vehicles: Ivehicles[];
+requests: IRequest[];
+users: IUser[];
+companies: ICompany[];
+tickets: IjobTicket[];
+types: IResourceType[];
+items: Iitem[];
 
   constructor(
     private vehService: VehicleService,
     private reqService: InventoryrequestService,
     private userService: UserService,
+    private compService: CompanyService,
+    private ticketService: UseticketService,
+    private itemService: ItemService,
+    private rtService: ResourcetypeService
   ) { }
 
   ngOnInit() {
@@ -37,6 +53,10 @@ users: IUser[] = [];
 
     this.userService.getAllUsers().subscribe(data => {
       this.users = data;
+    });
+
+    this.compService.getAllCompanies().subscribe(data => {
+      this.companies = data;
     });
   }
 
