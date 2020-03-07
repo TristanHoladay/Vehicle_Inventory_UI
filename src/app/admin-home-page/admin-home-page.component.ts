@@ -58,6 +58,18 @@ items: Iitem[];
     this.compService.getAllCompanies().subscribe(data => {
       this.companies = data;
     });
+
+    this.ticketService.getAllTickets().subscribe(data => {
+      this.tickets = data;
+    });
+
+    this.itemService.getAllItems(1).subscribe(data => {
+      this.items = data;
+    });
+
+    this.rtService.getAllResourceTypes().subscribe(data => {
+      this.types = data;
+    });
   }
 
   vehNum(): number {
