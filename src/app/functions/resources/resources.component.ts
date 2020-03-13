@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/dataservice.service';
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
+  admin: boolean = false;
   items: Iitem[] = [];
   dataSubject: any = {};
   show: boolean = false;
@@ -32,6 +33,10 @@ export class ResourcesComponent implements OnInit {
         this.items.push(this.dataSubject);
       }
     });
+
+    if(localStorage.getItem("role") == "admin") {
+      this.admin = true;
+    }
   
   }
 

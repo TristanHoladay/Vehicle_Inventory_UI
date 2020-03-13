@@ -8,6 +8,7 @@ import { Ivehicles } from 'src/app/interfaces/ivehicles';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent implements OnInit {
+  admin: boolean = false;
   vehicles: Ivehicles[] = [];
   show: boolean = false;
   addVehicle: Ivehicles = {
@@ -28,6 +29,10 @@ export class VehiclesComponent implements OnInit {
     this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data;
     });
+
+    if(localStorage.getItem("role") == "admin") {
+      this.admin = true;
+    }
   }
 
    //Update object list to force onChangeDetection

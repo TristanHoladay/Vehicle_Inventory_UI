@@ -6,6 +6,7 @@ import { IUser } from '../interfaces/iuser';
 import decode from 'jwt-decode';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UrlService } from './url.service';
+import { tokenGetter } from '../app.module';
 
 
 
@@ -44,6 +45,8 @@ export class AuthService {
 
    public isAuthenticated(): boolean {
      const token = this.getToken();
+     if(token == null) return false;
+     
      return !this.jwtHelper.isTokenExpired(token);
    }
   
@@ -56,6 +59,7 @@ export class AuthService {
 
           localStorage.setItem("currentUser", JSON.stringify(user));
           localStorage.setItem("token", user['token']);
+          localStorage.setItem("homepageVisit", "");
           this.currentUserSubject.next(user);
           return user;
         })
@@ -64,13 +68,23 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("homepageVisit");
     this.currentUserSubject.next(null);
   }
 
   decodeToken() {
     const token = decode(this.getToken());
     token.role = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    this.setRoleInStorage(token);
     return token;
+  }
+
+  setRoleInStorage(token) {
+    if(token.role == "Admin") {
+      localStorage.setItem("role", "admin");
+    }
   }
 }
  

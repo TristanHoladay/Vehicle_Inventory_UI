@@ -106,7 +106,7 @@
 </div>
 
 
-
+<div id="table-container">
 <mat-form-field *ngIf="dataSource">
         <input (keyup)="applyFilter($event.target.value)" matInput [formControl]="myControl" placeholder="Filter">
 </mat-form-field>
@@ -120,6 +120,7 @@
     <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columns;"></mat-row>
 </mat-table>
+</div>
 
 <div id="break"></div>
 <app-footer></app-footer>

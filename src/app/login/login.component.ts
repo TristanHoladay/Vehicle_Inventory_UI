@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { decode } from 'jwt-decode';
+import { RoleGuardService } from '../services/role-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private roleService: RoleGuardService
   ) { }
 
   ngOnInit() {
@@ -39,14 +41,15 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigateByUrl("admin");
+          if(data.adminRole) {
+            this.router.navigateByUrl("home");
+          } else {
+            this.router.navigateByUrl("user");
+          }
         },
         error => {
-          console.log(error);
+          alert("Oops! You might have incorrectly typed your password, or you don't have permission to access this site. If you need help, please contact your system admin.");
         }
       );
-      console.log("logged in!");
-      console.log(this.authService.getToken());
-      console.log(this.authService.decodeToken());
   }
 }

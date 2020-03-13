@@ -7,12 +7,12 @@
     margin-top: .5em;
 }
 
-#logo h2 {
+#logo h1 {
     text-decoration: underline;
 }
 
 #container {
-    height: 100vh;
+    height: 130vh;
     display: grid;
     grid-column: 1fr;
     justify-items: center;
@@ -23,8 +23,9 @@
     width: 30%;
     height: 70%;
     position: relative;
-    top: 1em;
-    background-color: rgba(18, 46, 77, 0.027)
+    top: -5em;
+    background-color: rgba(18, 46, 77, 0.027);
+    margin-bottom: 4em;
 }
 
 form {

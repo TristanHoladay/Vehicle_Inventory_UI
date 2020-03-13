@@ -37,3 +37,7 @@
 .selectedDataDisplay > h3 {
     margin: 1em 1em;
 }
+
+#table-container {
+    margin: 0 1em;
+}

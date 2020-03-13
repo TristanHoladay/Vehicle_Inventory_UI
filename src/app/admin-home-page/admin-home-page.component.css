@@ -101,13 +101,13 @@ a {
 
 .listNumbers {
     margin-right: 2em;
-    padding-left: .1em;
+    padding: .1em .2em;
     color: white;
     font-size: 5em;
     background-color: rgb(0,123,255);
     border-radius: 50%;
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.5em;
+    height: 1.5em;
     display: grid;
     justify-content: center;
     align-content: center;

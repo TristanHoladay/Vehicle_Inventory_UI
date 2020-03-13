@@ -43,6 +43,9 @@ items: Iitem[];
   ) { }
 
   ngOnInit() {
+
+    this.greeting();
+
     this.vehService.getAllVehicles().subscribe(data => {
       this.vehicles = data;
     });
@@ -94,6 +97,20 @@ items: Iitem[];
     });
 
     return reqNum;
+  }
+
+  greeting() {
+    if(localStorage.getItem("homepageVisit") == "") {
+      this.showGreeting =  true;
+    } else {
+      this.showGreeting = false;
+      this.showOptions = true;
+    }
+  }
+
+  storeVisit() {
+    localStorage.setItem("homepageVisit", "true");
+    this.showGreeting =  false;
   }
 
 }

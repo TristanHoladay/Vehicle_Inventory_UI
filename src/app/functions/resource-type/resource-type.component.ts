@@ -10,6 +10,7 @@ import { ResourcetypeService } from 'src/app/services/resourcetype.service';
 export class ResourceTypeComponent implements OnInit {
   types: IResourceType[] = [];
   show: boolean = false;
+  admin = false;
   addType: {
     id: 1,
     name: ""
@@ -23,6 +24,10 @@ export class ResourceTypeComponent implements OnInit {
     this.typeService.getAllResourceTypes().subscribe(data => {
       this.types = data;
     });
+
+    if(localStorage.getItem("role") == "admin") {
+      this.admin = true;
+    }
   }
 
    //Update object list to force onChangeDetection

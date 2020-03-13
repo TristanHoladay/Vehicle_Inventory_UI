@@ -24,7 +24,9 @@ export class RoleGuardService {
     }
 
     if(token.role !== expectedRole) {
-      this.router.navigateByUrl("home");
+      alert("You do not have permission to view this data.");
+      var currentRoute = this.router.url;
+      this.router.navigateByUrl(currentRoute);
     }
     return true;
   }

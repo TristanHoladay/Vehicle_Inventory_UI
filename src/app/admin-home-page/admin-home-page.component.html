@@ -17,7 +17,7 @@
 
     <div id="greeting-container" class="card" *ngIf="showGreeting">
         <div id="greeting">
-           <button (click)="[showGreeting = !showGreeting, showOptions = !showOptions]"><h1>Let's Get Trackin'</h1></button>
+           <button (click)="[storeVisit(), showOptions = !showOptions]"><h1>Let's Get Trackin'</h1></button>
         </div> 
     </div>
 
@@ -50,7 +50,7 @@
             </div>
             <div class="option">
                 <a routerLink="/resourcetype" routerLinkActive><h1>Resource Types</h1></a>
-                <span class="listNumbers">{{ types.length }}</span>
+                <span class="listNumbers reqNum">{{ types.length }}</span>
             </div>
             <div class="option">
                 <a routerLink="/resources" routerLinkActive><h1>Resources</h1></a>

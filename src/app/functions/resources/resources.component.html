@@ -2,10 +2,10 @@
       <div class="options-container">
         <div class="create-container">
             <h1>Create A New Use Item</h1>
-            <button class="btn btn-lg btn-outline-primary" (click)="create()">Create</button>
+            <button *ngIf="admin" class="btn btn-lg btn-outline-primary" (click)="create()">Create</button>
         </div>
         <div class="view-option-container">
-            <h1>Update Current Items</h1>
+            <h1>View Current Items</h1>
             <button class="btn btn-lg btn-outline-primary" (click)=showContent()>View</button>
         </div>
       </div>
@@ -24,7 +24,7 @@
                 <label class="object-labels"><strong>Vehicle?:</strong> {{ item.vehicle }} </label>
                 <label class="object-labels"><strong>Ticket?:</strong> {{ ticketNum(item)  }} </label>
                 <div class="update-modal-container">
-                    <update-modal [updateObject]="item" (updated)="updtData($event)"></update-modal>
+                    <update-modal *ngIf="admin" [updateObject]="item" (updated)="updtData($event)"></update-modal>
                 </div>
             </div>
         </div>
