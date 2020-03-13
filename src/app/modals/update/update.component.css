@@ -1,4 +1,4 @@
-mat-form-field .update-input-container {
+.update-input-container {
     display: block;
-    margin: .5em 2em;
+    margin: .5em 1em;
 }
