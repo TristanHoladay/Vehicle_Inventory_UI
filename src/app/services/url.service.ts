@@ -9,7 +9,8 @@ export class UrlService {
   constructor() { }
 
   getURL() {
-    this.URL = "https://localhost:44314/api";
+    this.URL = "https://trackitapi.azurewebsites.net/api";
+    //this.URL = "https://localhost:44314/api";
     return this.URL;
   }
 }
